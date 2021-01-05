@@ -1,0 +1,20 @@
+.invoice {
+  font-size: 15px;
+  width: 320px;
+}
+.address {
+  font-size: 8px;
+  text-align: center;
+  color: blue;
+  cursor: pointer;
+}
+
+.date {
+  font-size: 15px;
+  width: 150px;
+}
+
+.entryFields {
+  font-size: 15px;
+  width: 150px;
+}
