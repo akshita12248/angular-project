@@ -3,7 +3,7 @@
   width: 320px;
 }
 .address {
-  font-size: 8px;
+  font-size: 10px;
   text-align: center;
   color: blue;
   cursor: pointer;
@@ -17,4 +17,20 @@
 .entryFields {
   font-size: 15px;
   width: 150px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.cancel {
+  margin-top: 20px;
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.selectValue {
+  margin-top: 5px;
+  font-size: 13px;
+  margin-left: 10px;
 }

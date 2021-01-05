@@ -5,6 +5,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatSelectModule } from "@angular/material/select";
+import {MatRadioModule} from '@angular/material/radio';
 
 const materialComponents = [
   MatButtonModule,
@@ -12,7 +13,8 @@ const materialComponents = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatAutocompleteModule,
-  MatSelectModule
+  MatSelectModule,
+  MatRadioModule
 ];
 
 @NgModule({
