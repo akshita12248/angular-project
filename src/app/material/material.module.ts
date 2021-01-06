@@ -6,6 +6,8 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatSelectModule } from "@angular/material/select";
 import {MatRadioModule} from '@angular/material/radio';
+import {MatIconModule} from '@angular/material/icon';
+
 
 const materialComponents = [
   MatButtonModule,
@@ -14,7 +16,8 @@ const materialComponents = [
   MatNativeDateModule,
   MatAutocompleteModule,
   MatSelectModule,
-  MatRadioModule
+  MatRadioModule,
+  MatIconModule
 ];
 
 @NgModule({

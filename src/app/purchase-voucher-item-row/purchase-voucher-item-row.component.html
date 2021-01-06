@@ -1,22 +1,22 @@
-<form [formGroup]="voucherForm">
-	<div class="form-group" fxLayoutAlign="row">
-		<div class="col-md-offset-2 col-md-4">
-			<button mat-raised-button color="primary" type="button" class="btn btn-primary" (click)="addSkillButtonClick()">
+<div style="margin-bottom:20px; margin-left:530px">
+	<mat-label>Effective Amount</mat-label>
+  <mat-label> : Amount</mat-label>
+</div>
+<div class="vouchers">
+	<form [formGroup]="voucherForm">
+		<div class="form-group" fxLayoutAlign="row">
+			<div class="col-md-offset-2 col-md-4">
+				<button mat-raised-button color="primary" type="button"  (click)="addSkillButtonClick()"
+         style="margin-left:590px">
       Add Voucher
     </button>
+			</div>
 		</div>
-	</div>
-	<div formArrayName="skills" *ngFor="let skill of voucherForm.get('skills')['controls'];let i=index">
-		<div style="margin-top:30px" *ngIf="voucherForm.get('skills')['controls'].length>1">
-			<button mat-raised-button color="warn" title="delete skill"
-          (click)="removeSkillButtonClick(i)">Delete Voucher Item Row</button>
-		</div>
+		<div formArrayName="skills" *ngFor="let skill of voucherForm.get('skills')['controls'];let i=index">
+			<div [formGroupName]="i" fxLayoutGap="20px" fxLayout="row">
 
-		<hr *ngIf="i>0">
-		<div [formGroupName]="i" fxLayoutAlign="column" fxLayoutGap="20px">
-			<div>
 				<div [ngClass]="{'has-error':skill.get('item').invalid && skill.get('item').touched }">
-					<mat-form-field class="example-full-width">
+					<mat-form-field class="example-full-width" class="inputs">
 						<mat-label [attr.for]="'item'+i">Item</mat-label>
 						<input matInput [id]="'item'+i" formControlName="item" >
         </mat-form-field>
@@ -24,76 +24,76 @@
           Item is required
          </span>
 				</div>
-			</div>
-			<div [ngClass]="{'has-error':skill.get('uom').invalid && skill.get('uom').touched }">
-				<mat-form-field class="example-full-width">
-					<mat-label [attr.for]="'uom'+i">UOM</mat-label>
-					<input matInput [id]="'uom'+i" formControlName="uom">
+
+				<div [ngClass]="{'has-error':skill.get('uom').invalid && skill.get('uom').touched }">
+					<mat-form-field class="example-full-width" class="inputs">
+						<mat-label [attr.for]="'uom'+i">UOM</mat-label>
+						<input matInput [id]="'uom'+i" formControlName="uom" >
         </mat-form-field>
-					<span style="color: red;" *ngIf="skill.get('uom').errors?.required && skill.get('uom').touched ">
+						<span style="color: red;" *ngIf="skill.get('uom').errors?.required && skill.get('uom').touched ">
           UOM is required
          </span>
-			</div>
+				</div>
 
-			<div [ngClass]="{'has-error':skill.get('quantity').invalid && skill.get('quantity').touched }">
-				<mat-form-field class="example-full-width">
-					<mat-label [attr.for]="'quantity'+i">Quantity</mat-label>
-					<input matInput [id]="'quantity'+i" formControlName="quantity">
+				<div [ngClass]="{'has-error':skill.get('quantity').invalid && skill.get('quantity').touched }">
+					<mat-form-field class="example-full-width" class="inputs">
+						<mat-label [attr.for]="'quantity'+i">Quantity</mat-label>
+						<input matInput [id]="'quantity'+i" formControlName="quantity" >
         </mat-form-field>
-					<span style="color: red;" *ngIf="skill.get('quantity').errors?.required && skill.get('quantity').touched ">
+						<span style="color: red;" *ngIf="skill.get('quantity').errors?.required && skill.get('quantity').touched ">
           Quantity is required
          </span>
-			</div>
-			<div [ngClass]="{'has-error':skill.get('price').invalid && skill.get('price').touched }">
-				<mat-form-field class="example-full-width">
-					<mat-label [attr.for]="'price'+i">Price</mat-label>
-					<input matInput [id]="'price'+i" formControlName="price">
+				</div>
+
+
+				<div [ngClass]="{'has-error':skill.get('price').invalid && skill.get('price').touched }">
+					<mat-form-field class="example-full-width" class="inputs">
+						<mat-label [attr.for]="'price'+i">Price</mat-label>
+						<input matInput [id]="'price'+i" formControlName="price" >
         </mat-form-field>
-					<span style="color: red;" *ngIf="skill.get('price').errors?.required && skill.get('price').touched ">
+						<span style="color: red;" *ngIf="skill.get('price').errors?.required && skill.get('price').touched ">
           Price is required
          </span>
-			</div>
+				</div>
 
-			<div [ngClass]="{'has-error':skill.get('lotNo').invalid && skill.get('lotNo').touched }">
-				<mat-form-field class="example-full-width">
-					<mat-label [attr.for]="'lotNo'+i">Lot No</mat-label>
-					<input matInput [id]="'lotNo'+i" formControlName="lotNo">
+				<div [ngClass]="{'has-error':skill.get('lotNo').invalid && skill.get('lotNo').touched }">
+					<mat-form-field class="example-full-width" class="inputs">
+						<mat-label [attr.for]="'lotNo'+i">Lot No</mat-label>
+						<input matInput [id]="'lotNo'+i" formControlName="lotNo">
         </mat-form-field>
-					<span style="color: red;" *ngIf="skill.get('lotNo').errors?.required && skill.get('lotNo').touched ">
+						<span style="color: red;" *ngIf="skill.get('lotNo').errors?.required && skill.get('lotNo').touched ">
           Lot No is required
          </span>
-			</div>
+				</div>
 
-			<div [ngClass]="{'has-error':skill.get('tax').invalid && skill.get('tax').touched }">
-				<mat-form-field class="example-full-width">
-					<mat-label [attr.for]="'tax'+i">Tax</mat-label>
-					<input matInput [id]="'tax'+i" formControlName="tax">
+				<div [ngClass]="{'has-error':skill.get('tax').invalid && skill.get('tax').touched }">
+					<mat-form-field class="example-full-width" class="inputs">
+						<mat-label [attr.for]="'tax'+i">Tax</mat-label>
+						<input matInput [id]="'tax'+i" formControlName="tax" >
         </mat-form-field>
-					<span style="color: red;" *ngIf="skill.get('tax').errors?.required && skill.get('tax').touched ">
+						<span style="color: red;" *ngIf="skill.get('tax').errors?.required && skill.get('tax').touched ">
          Tax is required
          </span>
+				</div>
+				<div *ngIf="voucherForm.get('skills')['controls'].length>1">
+					<span style="margin-top:20px" class="material-icons" title="delete voucher item" (click)="removeSkillButtonClick(i)">delete</span>
+				</div>
+
 			</div>
-		</div>
-		<div [ngClass]="{'has-error':skill.get('effectiveAmount').invalid && skill.get('effectiveAmount').touched }"
-			fxLayoutAlign="end">
-			<mat-label [attr.for]="'effectiveAmount'+i">Effective Amount</mat-label>
-		</div>
-		<div class="form-group">
-			<div>
-				<button mat-raised-button color="primary" type="button" (click)="addBillSundryClick(skill)">
+
+			<div class="form-group">
+				<div>
+					<button mat-raised-button color="primary" type="button" (click)="addBillSundryClick(skill)"
+          style="margin-left:580px">
       Add Bill Sundry
     </button>
+				</div>
 			</div>
-		</div>
-		<div *ngFor="let bill of skill.get('bills')['controls'];let j=index">
-			<div style="margin-top:30px">
-				<button mat-raised-button color="warn" title="delete skill" *ngIf="skill.get('bills')['controls'].length>1"
-          (click)="removeVoucherButtonClick(skill,j)">Delete Bill Sundry</button>
-			</div>
-			<div [formGroup]="bill" fxLayoutAlign="column" fxLayoutGap="20px">
-				<div>
+			<div *ngFor="let bill of skill.get('bills')['controls'];let j=index">
+				<div [formGroup]="bill" fxLayoutGap="20px" fxLayoutAlign="row">
+
 					<div [ngClass]="{'has-error':bill.get('billSundry').invalid && bill.get('billSundry').touched }">
-						<mat-form-field class="example-full-width">
+						<mat-form-field class="example-full-width" class="billInputs">
 							<mat-label [attr.for]="'billSundry'+j">Bill Sundry</mat-label>
 							<input matInput [id]="'billSundry'+j" formControlName="billSundry" >
         </mat-form-field>
@@ -102,84 +102,92 @@
          </span>
 					</div>
 
-				</div>
-				<div [ngClass]="{'has-error':bill.get('value').invalid && bill.get('value').touched }">
-					<mat-form-field class="example-full-width">
-						<mat-label [attr.for]="'value'+j">Value</mat-label>
-						<input matInput [id]="'value'+j" formControlName="value">
+
+					<div [ngClass]="{'has-error':bill.get('value').invalid && bill.get('value').touched }">
+						<mat-form-field class="example-full-width" class="billInputs">
+							<mat-label [attr.for]="'value'+j">Value</mat-label>
+							<input matInput [id]="'value'+j" formControlName="value">
         </mat-form-field>
-						<span style="color: red;" *ngIf="bill.get('value').errors?.required && bill.get('value').touched ">
+							<span style="color: red;" *ngIf="bill.get('value').errors?.required && bill.get('value').touched ">
           Value is required
          </span>
-				</div>
+					</div>
 
-				<div [ngClass]="{'has-error':bill.get('amount').invalid && bill.get('amount').touched }">
-					<mat-form-field class="example-full-width">
-						<mat-label [attr.for]="'amount'+j">Amount</mat-label>
-						<input matInput [id]="'amount'+j" formControlName="amount">
+					<div [ngClass]="{'has-error':bill.get('amount').invalid && bill.get('amount').touched }">
+						<mat-form-field class="example-full-width" class="billInputs">
+							<mat-label [attr.for]="'amount'+j">Amount</mat-label>
+							<input matInput [id]="'amount'+j" formControlName="amount">
         </mat-form-field>
-						<span style="color: red;" *ngIf="bill.get('amount').errors?.required && bill.get('amount').touched ">
+							<span style="color: red;" *ngIf="bill.get('amount').errors?.required && bill.get('amount').touched ">
           Amount is required
          </span>
-				</div>
-				<div [ngClass]="{'has-error':bill.get('desc').invalid && bill.get('desc').touched }">
-					<mat-form-field class="example-full-width">
-						<mat-label [attr.for]="'desc'+j">Description</mat-label>
-						<input matInput [id]="'desc'+j" formControlName="desc">
+					</div>
+					<div [ngClass]="{'has-error':bill.get('desc').invalid && bill.get('desc').touched }">
+						<mat-form-field class="example-full-width" class="billInputs">
+							<mat-label [attr.for]="'desc'+j">Description</mat-label>
+							<input matInput [id]="'desc'+j" formControlName="desc">
         </mat-form-field>
-						<span style="color: red;" *ngIf="bill.get('desc').errors?.required && bill.get('desc').touched ">
+							<span style="color: red;" *ngIf="bill.get('desc').errors?.required && bill.get('desc').touched ">
           Description is required
          </span>
+					</div>
+					<div>
+						<span style="margin-top:20px" class="material-icons" title="delete bill sundry"  *ngIf="skill.get('bills')['controls'].length>1"
+          (click)="removeVoucherButtonClick(skill,j)">delete</span>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<div>
+					<button mat-raised-button color="primary" type="button" (click)="addSubItem(skill)"
+           style="margin-left:590px">
+      Add Sub Item
+    </button>
 				</div>
 			</div>
 
-		</div>
+			<div *ngFor="let sub of skill.get('subItem')['controls'];let j=index">
+				<div [formGroup]="sub" fxLayoutGap="20px" fxLayoutAlign="row">
 
-		<div class="form-group">
-			<div>
-				<button mat-raised-button color="primary" type="button" (click)="addSubItem(skill)">
-      Add Sub Item
-    </button>
-			</div>
-		</div>
-		<div *ngFor="let sub of skill.get('subItem')['controls'];let j=index">
-			<div style="margin-top:30px">
-				<button mat-raised-button color="warn" title="delete skill" *ngIf="skill.get('subItem')['controls'].length>1"
-          (click)="removeSubItemButtonClick(skill,j)">Delete Sub Item</button>
-			</div>
-			<div [formGroup]="sub" fxLayoutAlign="column" fxLayoutGap="20px">
-				<div>
 					<div [ngClass]="{'has-error':sub.get('subQuantity').invalid && sub.get('subQuantity').touched }">
-						<mat-form-field class="example-full-width">
+						<mat-form-field class="example-full-width" class="subItems">
 							<mat-label [attr.for]="'subQuantity'+j">Bill Sundry</mat-label>
 							<input matInput [id]="'subQuantity'+j" formControlName="subQuantity" >
         </mat-form-field>
 							<span style="color: red;" *ngIf="sub.get('subQuantity').errors?.required && sub.get('subQuantity').touched ">
-          Quantity is required
+          Bill sundry is required
          </span>
 					</div>
 
-				</div>
-				<div [ngClass]="{'has-error':sub.get('subSerialNo').invalid && sub.get('subSerialNo').touched }">
-					<mat-form-field class="example-full-width">
-						<mat-label [attr.for]="'subSerialNo'+j">Serial No</mat-label>
-						<input matInput [id]="'subSerialNo'+j" formControlName="subSerialNo">
+
+					<div [ngClass]="{'has-error':sub.get('subSerialNo').invalid && sub.get('subSerialNo').touched }">
+						<mat-form-field class="example-full-width" class="subItems">
+							<mat-label [attr.for]="'subSerialNo'+j">Serial No</mat-label>
+							<input matInput [id]="'subSerialNo'+j" formControlName="subSerialNo">
         </mat-form-field>
-						<span style="color: red;" *ngIf="sub.get('subSerialNo').errors?.required && sub.get('subSerialNo').touched ">
+							<span style="color: red;" *ngIf="sub.get('subSerialNo').errors?.required && sub.get('subSerialNo').touched ">
           Serial No is required
          </span>
-				</div>
+					</div>
 
-				<div [ngClass]="{'has-error':sub.get('subDescription').invalid && sub.get('subDescription').touched }">
-					<mat-form-field class="example-full-width">
-						<mat-label [attr.for]="'subDescription'+j">Description</mat-label>
-						<input matInput [id]="'subDescription'+j" formControlName="subDescription">
+					<div
+						[ngClass]="{'has-error':sub.get('subDescription').invalid && sub.get('subDescription').touched }">
+						<mat-form-field class="example-full-width" class="subItems">
+							<mat-label [attr.for]="'subDescription'+j">Description</mat-label>
+							<input matInput [id]="'subDescription'+j" formControlName="subDescription">
         </mat-form-field>
-						<span style="color: red;" *ngIf="sub.get('subDescription').errors?.required && sub.get('subDescription').touched ">
+							<span style="color: red;" *ngIf="sub.get('subDescription').errors?.required && sub.get('subDescription').touched ">
           Description is required
          </span>
+					</div>
+					<div>
+						<span style="margin-top:20px" class="material-icons" title="delete skill"  *ngIf="skill.get('subItem')['controls'].length>1"
+          (click)="removeSubItemButtonClick(skill,j)">delete</span>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</form>
+	</form>
+</div>
