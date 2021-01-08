@@ -7,6 +7,8 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatSelectModule } from "@angular/material/select";
 import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
+import {MatExpansionModule} from '@angular/material/expansion';
+// import {MatAccordionModule} from '@angular/material/accordion';
 
 
 const materialComponents = [
@@ -17,7 +19,8 @@ const materialComponents = [
   MatAutocompleteModule,
   MatSelectModule,
   MatRadioModule,
-  MatIconModule
+  MatIconModule,
+  MatExpansionModule
 ];
 
 @NgModule({

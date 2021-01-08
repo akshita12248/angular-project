@@ -8,6 +8,7 @@ import { AppComponent } from "./app.component";
 import { MaterialModule } from "./material/material.module";
 import { PurchaseQuotationComponent } from "./purchase-quotation/purchase-quotation.component";
 import { PurchaseVoucherItemRowComponent } from "./purchase-voucher-item-row/purchase-voucher-item-row.component";
+import { ExpansionPanelComponent } from './expansion-panel/expansion-panel.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { PurchaseVoucherItemRowComponent } from "./purchase-voucher-item-row/pur
   declarations: [
     AppComponent,
     PurchaseQuotationComponent,
-    PurchaseVoucherItemRowComponent
+    PurchaseVoucherItemRowComponent,
+    ExpansionPanelComponent
   ],
   bootstrap: [AppComponent]
 })
