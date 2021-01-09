@@ -1,28 +1,20 @@
 <div fxLayout="row" fxLayoutAlign="space-between end" style="margin-top:20px;;font-size:10px;">
-	<div fxLayoutGap="10px">
+	<div fxLayoutGap="10px" [formGroup]="sub">
 		<mat-form-field class="example-full-width " appearance="fill" style="width:10%;">
-			<mat-label>S.No</mat-label>
-			<input matInput>
+			<mat-label >S.No</mat-label>
+			<input matInput formControlName="serialNo">
     </mat-form-field>
 			<mat-form-field class="example-full-width" appearance="fill">
 				<mat-label>Description</mat-label>
-				<input matInput>
+				<input matInput formControlName="subdescription">
     </mat-form-field>
 				<mat-form-field class="example-full-width " appearance="fill" style="width:10%;">
 					<mat-label>Qnty</mat-label>
-					<input matInput>
+					<input matInput formControlName="subQuantity">
     </mat-form-field>
-					<span style="margin-top:10px;margin-left:5px;" class="material-icons" title="delete voucher item">delete</span>
-
-	</div>
-	<div fxLayout="row" fxLayoutGap="10px" style="margin-right:65px;">
-		<p>Effective Amount:</p>
-		<mat-form-field class="example-full-width" appearance="fill">
-			<input matInput>
-    </mat-form-field>
+					<span style="margin-top:10px;margin-left:5px;" class="material-icons" title="delete voucher item"
+          *ngIf="parentFormGroup.get('subItem')['controls'].length>1"
+          (click)="removeSubItemButtonClick(parentFormGroup,j)">delete</span>
 	</div>
 </div>
 
-<div>
-			<button mat-raised-button style="font-size:10px;">Add Sub Item</button>
-		</div>

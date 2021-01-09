@@ -41,7 +41,12 @@
 
 				</mat-panel-description>
 			</mat-expansion-panel-header>
-			<app-voucher-sub-item></app-voucher-sub-item>
+			<app-voucher-sub-item *ngFor="let sub of skill.get('subItem')['controls'];let j=index" 
+      [formGroup]="sub" [parentFormGroup]="skill">
+      </app-voucher-sub-item>
+      <div>
+			<button mat-raised-button style="font-size:10px;" (click)="addSubItem(skill)">Add Sub Item</button>
+		</div>
 			<app-voucher-bill-sundry></app-voucher-bill-sundry>
 			<!-- <div fxLayoutAlign="row" fxLayoutGap="10px" style="margin-right:65px;">
 				<p>Taxable Amount:</p>

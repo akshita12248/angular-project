@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
+import { FormGroup } from "@angular/forms";
 
 @Component({
-  selector: 'app-voucher-sub-item',
-  templateUrl: './voucher-sub-item.component.html',
-  styleUrls: ['./voucher-sub-item.component.css']
+  selector: "app-voucher-sub-item",
+  templateUrl: "./voucher-sub-item.component.html",
+  styleUrls: ["./voucher-sub-item.component.css"]
 })
 export class VoucherSubItemComponent implements OnInit {
+  @Input formGroup: FormGroup;
+  @Input parentFormGroup: FormGroup;
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  removeSubItemButtonClick(
+    parentFormGroup: FormGroup,
+    subItemGroupIndex: number
+  ): void {
+    const sunItemFormArray = <FormArray>parentFormGroup.get("subItem");
+    sunItemFormArray.removeAt(subItemGroupIndex);
+    sunItemFormArray.markAsDirty();
+    sunItemFormArray.markAsTouched();
   }
-
 }

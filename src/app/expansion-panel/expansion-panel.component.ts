@@ -29,11 +29,19 @@ panelOpenState = false;
       price: ["", Validators.required],
       lotNo: ["", Validators.required],
       tax: ["", Validators.required],
-      amount:["",Validators.required]
+      amount:["",Validators.required],
       // effectiveAmount: [""],
       // bills: this.fb.array([this.addBillFormGroup()]),
-      // subItem: this.fb.array([this.addSubItemGroup()])
+      subItem: this.fb.array([this.addSubItemGroup()])
     });
   }
+  addSubItemGroup(): FormGroup {
+    return this.fb.group({
+      subQuantity: ["", Validators.required],
+      subSerialNo: ["", Validators.required],
+      subDescription: ["", Validators.required]
+    });
+  }
+
 
 }
