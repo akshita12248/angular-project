@@ -1,70 +1,64 @@
-<form [formGroup]="voucherForm">
-	<mat-accordion formArrayName="skills" *ngFor="let skill of voucherForm.get('skills')['controls'];let i=index">
-		<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-			<mat-expansion-panel-header>
-				<mat-panel-description class="voucherItems">
-
-					<div>
-						<div fxLayoutGap="10px" [formGroupName]="i">
-							<mat-form-field class="item" appearance="fill">
-								<mat-label [attr.for]="'item'+i">Item</mat-label>
-								<input matInput matInput [id]="'item'+i" formControlName="item">
+<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [formGroup]="formGroup">
+	<mat-expansion-panel-header>
+		<mat-panel-description class="voucherItems">
+			<div>
+				<div fxLayoutGap="10px">
+					<mat-form-field class="item" appearance="fill">
+						<mat-label [attr.for]="'item'+parentData">Item</mat-label>
+						<input matInput matInput [id]="'item'+parentData" formControlName="item">
+    </mat-form-field>
+						<mat-form-field class="example-full-width inputs" appearance="fill">
+							<mat-label [attr.for]="'uom'+parentData">UOM</mat-label>
+							<input matInput [id]="'uom'+parentData" formControlName="uom">
+    </mat-form-field>
+							<mat-form-field class="example-full-width inputs" appearance="fill">
+								<mat-label [attr.for]="'quantity'+parentData">Qnty</mat-label>
+								<input matInput [id]="'quantity'+parentData" formControlName="quantity">
     </mat-form-field>
 								<mat-form-field class="example-full-width inputs" appearance="fill">
-									<mat-label [attr.for]="'uom'+i">UOM</mat-label>
-									<input matInput [id]="'uom'+i" formControlName="uom">
+									<mat-label [attr.for]="'price'+parentData">Price</mat-label>
+									<input matInput [id]="'price'+parentData" formControlName="price">
     </mat-form-field>
 									<mat-form-field class="example-full-width inputs" appearance="fill">
-										<mat-label [attr.for]="'quantity'+i">Qnty</mat-label>
-										<input matInput [id]="'quantity'+i" formControlName="quantity">
+										<mat-label [attr.for]="'lotNo'+parentData">Lot No</mat-label>
+										<input matInput [id]="'lotNo'+parentData" formControlName="lotNo">
     </mat-form-field>
-										<mat-form-field class="example-full-width inputs" appearance="fill">
-											<mat-label [attr.for]="'price'+i">Price</mat-label>
-											<input matInput [id]="'price'+i" formControlName="price">
+										<mat-form-field class="example-full-width taxInputs" appearance="fill">
+											<mat-label [attr.for]="'tax'+parentData">TAX</mat-label>
+											<input matInput [id]="'tax'+parentData" formControlName="tax">
     </mat-form-field>
-											<mat-form-field class="example-full-width inputs" appearance="fill">
-												<mat-label [attr.for]="'lotNo'+i">Lot No</mat-label>
-												<input matInput [id]="'lotNo'+i" formControlName="lotNo">
+											<mat-form-field class="example-full-width taxInputs" appearance="fill">
+												<mat-label [attr.for]="'amount'+parentData">Amount</mat-label>
+												<input matInput [id]="'amount'+parentData" formControlName="amount">
     </mat-form-field>
-												<mat-form-field class="example-full-width taxInputs" appearance="fill">
-													<mat-label [attr.for]="'tax'+i">TAX</mat-label>
-													<input matInput [id]="'tax'+i" formControlName="tax">
-    </mat-form-field>
-													<mat-form-field class="example-full-width taxInputs"
-														appearance="fill">
-														<mat-label [attr.for]="'amount'+i">Amount</mat-label>
-														<input matInput [id]="'amount'+i" formControlName="amount">
-    </mat-form-field>
-														<span style="margin-top:20px" class="material-icons" title="delete voucher item"
-                            (click)="removeSkillButtonClick(i)" *ngIf="voucherForm.get('skills')['controls'].length>1"
+												<span style="margin-top:20px" class="material-icons" title="delete voucher item"
+                            (click)="removeSkillButtonClick()" *ngIf="parentFormGroup.get('skills')['controls'].length>1"
                             >delete</span>
-						</div>
-					</div>
+				</div>
+			</div>
 
-				</mat-panel-description>
-			</mat-expansion-panel-header>
-			<app-voucher-sub-item *ngFor="let sub of skill.get('subItem')['controls'];let j=index" [formGroup]="sub"
-				[parentFormGroup]="skill" [parentData]="j">
+		</mat-panel-description>
+	</mat-expansion-panel-header>
+	<div fxLayout="row" fxLayoutAlign="space-between end">
+		<div>
+			<app-voucher-sub-item *ngFor="let sub of formGroup.get('subItem')['controls'];let j=index" [formGroup]="sub"
+				[parentFormGroup]="formGroup" [parentData]="j">
 			</app-voucher-sub-item>
-			<div>
-				<button mat-raised-button style="font-size:10px;" (click)="addSubItem(skill)">Add Sub Item</button>
-			</div>
-			<app-voucher-bill-sundry *ngFor="let bill of skill.get('bills')['controls'];let j=index" [formGroup]="bill"
-				[parentFormGroup]="skill" [parentData]="j"></app-voucher-bill-sundry>
-			<div fxLayoutAlign="center" style="margin-left:130px">
-				<button mat-raised-button style="font-size:10px" type="button" (click)="addBillSundryClick(skill)">
-      Add Bill Sundry
-    </button>
-			</div>
-		</mat-expansion-panel>
-	</mat-accordion>
-
-	<div class="form-group" fxLayoutAlign="end">
-		<div class="col-md-offset-2 col-md-4">
-			<button mat-raised-button color="primary" type="button"  (click)="addSkillButtonClick()"
-         style="margin:10px">
-      Add Voucher
-    </button>
+			<button mat-raised-button style="font-size:10px;" (click)="addSubItem(formGroup)">Add Sub Item</button>
+		</div>
+		<div style="font-size:10px;margin-right:65px;margin-bottom:20px">
+			<mat-label style="margin-right:10px">Effective Amount:</mat-label>
+			<mat-form-field class="example-full-width" appearance="fill">
+				<input matInput formControlName="effectiveAmount">
+    </mat-form-field>
 		</div>
 	</div>
-</form>
+
+	<app-voucher-bill-sundry *ngFor="let bill of formGroup.get('bills')['controls'];let j=index" [formGroup]="bill"
+		[parentFormGroup]="formGroup" [parentData]="j"></app-voucher-bill-sundry>
+	<div fxLayoutAlign="center" style="margin-left:130px">
+		<button mat-raised-button style="font-size:10px" type="button" (click)="addBillSundryClick(formGroup)">
+      Add Bill Sundry
+    </button>
+	</div>
+</mat-expansion-panel>

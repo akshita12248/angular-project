@@ -1,4 +1,4 @@
-<form [formGroup]="purchaseForm">
+<form [formGroup]="voucherForm">
 	<div fxLayout="column" fxLayoutGap="10px">
 		<mat-form-field class="example-full-width" class="invoice">
 			<mat-label>Invoice No.</mat-label>
@@ -46,7 +46,7 @@
     </mat-form-field>
 				</div>
 				<div class="">
-					<mat-form-field class="example-full-width entryFields">
+					<!-- <mat-form-field class="example-full-width entryFields">
 						<input type="text"
            placeholder="Currency"
            aria-label="Number"
@@ -58,24 +58,38 @@
 								{{option}}
 							</mat-option>
 						</mat-autocomplete>
-					</mat-form-field>
+					</mat-form-field> -->
 				</div>
 			</div>
-      <div fxLayout="row" fxLayoutGap="20px">
-        <div>
-      <mat-form-field class="example-full-width" class="invoice">
-      <mat-label>Description</mat-label>
-      <textarea matInput></textarea>
-    </mat-form-field>
-        </div>
-        <div fxLayout="column" >
-    <mat-label class="cancel">Cancel</mat-label>
-    <div fxLayout="row">
-  <mat-radio-button value="1" class="selectValue">TRUE</mat-radio-button>
-  <mat-radio-button value="2" class="selectValue">FALSE</mat-radio-button>
-    </div>
-        </div>
-      </div>
+			<div fxLayout="row" fxLayoutGap="20px">
+				<div>
+					<mat-form-field class="example-full-width" class="invoice">
+						<mat-label>Description</mat-label>
+						<textarea matInput></textarea>
+					</mat-form-field>
+				</div>
+				<div fxLayout="column">
+					<mat-label class="cancel">Cancel</mat-label>
+					<div fxLayout="row">
+						<mat-radio-button value="1" class="selectValue">TRUE</mat-radio-button>
+						<mat-radio-button value="2" class="selectValue">FALSE</mat-radio-button>
+					</div>
+				</div>
+			</div>
+	</div>
+
+	<mat-accordion formArrayName="skills">
+		<app-expansion-panel *ngFor="let skill of voucherForm.get('skills')['controls'];let i=index"
+			style="padding:10px;" [formGroup]="skill" [parentFormGroup]="voucherForm" [parentData]="i">
+		</app-expansion-panel>
+	</mat-accordion>
+
+	<div class="form-group" fxLayoutAlign="end">
+		<div class="col-md-offset-2 col-md-4">
+			<button mat-raised-button color="primary" type="button"  (click)="addSkillButtonClick()"
+         style="margin:10px">
+      Add Item
+    </button>
+		</div>
 	</div>
 </form>
-<app-purchase-voucher-item-row></app-purchase-voucher-item-row>

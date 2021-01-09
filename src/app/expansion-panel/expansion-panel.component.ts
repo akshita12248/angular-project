@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
@@ -8,17 +8,13 @@ import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class ExpansionPanelComponent implements OnInit {
   panelOpenState = false;
-  voucherForm: FormGroup;
+
+  @Input() formGroup: FormGroup;
+  @Input() parentFormGroup: FormGroup;
+  @Input() parentData: number;
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {
-    this.voucherForm = this.fb.group({
-      skills: this.fb.array([this.addSkillFormGroup()])
-    });
-  }
-  addSkillButtonClick(): void {
-    (<FormArray>this.voucherForm.get("skills")).push(this.addSkillFormGroup());
-  }
+  ngOnInit() {}
 
   addSubItem(skill: FormGroup): void {
     (<FormArray>skill.get("subItem")).push(this.addSubItemGroup());
@@ -28,9 +24,9 @@ export class ExpansionPanelComponent implements OnInit {
     (<FormArray>skill.get("bills")).push(this.addBillFormGroup());
   }
 
-  removeSkillButtonClick(skillGroupIndex: number): void {
-    const skillsFormArray = <FormArray>this.voucherForm.get("skills");
-    skillsFormArray.removeAt(skillGroupIndex);
+  removeSkillButtonClick(): void {
+    const skillsFormArray = <FormArray>this.parentFormGroup.get("skills");
+    skillsFormArray.removeAt(this.parentData);
     skillsFormArray.markAsDirty();
     skillsFormArray.markAsTouched();
   }
@@ -44,16 +40,16 @@ export class ExpansionPanelComponent implements OnInit {
       lotNo: ["", Validators.required],
       tax: ["", Validators.required],
       amount: ["", Validators.required],
-      // effectiveAmount: [""],
+      effectiveAmount: [""],
       bills: this.fb.array([this.addBillFormGroup()]),
       subItem: this.fb.array([this.addSubItemGroup()])
     });
   }
   addSubItemGroup(): FormGroup {
     return this.fb.group({
-      subQuantity: ["", Validators.required],
       subSerialNo: ["", Validators.required],
-      subDescription: ["", Validators.required]
+      subDescription: ["", Validators.required],
+      subQuantity: ["", Validators.required]
     });
   }
 
