@@ -9,6 +9,8 @@ import { MaterialModule } from "./material/material.module";
 import { PurchaseQuotationComponent } from "./purchase-quotation/purchase-quotation.component";
 import { PurchaseVoucherItemRowComponent } from "./purchase-voucher-item-row/purchase-voucher-item-row.component";
 import { ExpansionPanelComponent } from './expansion-panel/expansion-panel.component';
+import { VoucherSubItemComponent } from './voucher-sub-item/voucher-sub-item.component';
+import { VoucherBillSundryComponent } from './voucher-bill-sundry/voucher-bill-sundry.component';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { ExpansionPanelComponent } from './expansion-panel/expansion-panel.compo
     AppComponent,
     PurchaseQuotationComponent,
     PurchaseVoucherItemRowComponent,
-    ExpansionPanelComponent
+    ExpansionPanelComponent,
+    VoucherSubItemComponent,
+    VoucherBillSundryComponent
   ],
   bootstrap: [AppComponent]
 })
