@@ -1,24 +1,21 @@
-<div>
-	<div fxLayoutAlign="end" style="margin-right:35px;font-size:10px;" fxLayoutGap="10px">
-		<mat-form-field class="example-full-width " appearance="fill" style="width:6%;">
-			<mat-label>Bill Sundry</mat-label>
-			<input matInput>
+<div fxLayoutAlign="end" style="margin-right:35px;font-size:10px;" fxLayoutGap="10px" [formGroup]=formGroup>
+	<mat-form-field class="example-full-width " appearance="fill" style="width:6%;">
+		<mat-label>Bill Sundry</mat-label>
+		<input matInput formControlName="billSundry">
     </mat-form-field>
-			<mat-form-field class="example-full-width" appearance="fill">
-				<mat-label>Description</mat-label>
-				<input matInput>
+		<mat-form-field class="example-full-width" appearance="fill">
+			<mat-label>Description</mat-label>
+			<input matInput formControlName="desc">
     </mat-form-field>
-				<mat-form-field class="example-full-width " appearance="fill" style="width:5%;">
-					<mat-label>Value</mat-label>
-					<input matInput>
+			<mat-form-field class="example-full-width " appearance="fill" style="width:5%;">
+				<mat-label>Value</mat-label>
+				<input matInput formControlName="value">
     </mat-form-field>
-					<mat-form-field class="example-full-width taxInputs" appearance="fill">
-						<mat-label>Amount</mat-label>
-						<input matInput>
+				<mat-form-field class="example-full-width taxInputs" appearance="fill">
+					<mat-label>Amount</mat-label>
+					<input matInput formControlName="amount">
     </mat-form-field>
-						<span style="margin-top:10px;margin-left:5px;" class="material-icons" title="delete voucher item">delete</span>
-	</div>
-	<div fxLayoutAlign="center" style="margin-left:150px;">
-		<button mat-raised-button style="font-size:10px;">Add Bill Sundry</button>
-	</div>
+					<span style="margin-top:10px;margin-left:5px;" class="material-icons" title="delete bill Sundry"
+           *ngIf="parentFormGroup.get('bills')['controls'].length>1"
+          (click)="removeVoucherButtonClick(parentFormGroup,parentData)">delete</span>
 </div>

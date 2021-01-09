@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
-  selector: 'app-expansion-panel',
-  templateUrl: './expansion-panel.component.html',
-  styleUrls: ['./expansion-panel.component.css']
+  selector: "app-expansion-panel",
+  templateUrl: "./expansion-panel.component.html",
+  styleUrls: ["./expansion-panel.component.css"]
 })
 export class ExpansionPanelComponent implements OnInit {
-panelOpenState = false;
- voucherForm: FormGroup;
-  constructor(private fb:FormBuilder) { }
+  panelOpenState = false;
+  voucherForm: FormGroup;
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-     this.voucherForm = this.fb.group({
+    this.voucherForm = this.fb.group({
       skills: this.fb.array([this.addSkillFormGroup()])
     });
   }
@@ -20,8 +20,22 @@ panelOpenState = false;
     (<FormArray>this.voucherForm.get("skills")).push(this.addSkillFormGroup());
   }
 
+  addSubItem(skill: FormGroup): void {
+    (<FormArray>skill.get("subItem")).push(this.addSubItemGroup());
+  }
 
-   addSkillFormGroup(): FormGroup {
+  addBillSundryClick(skill: FormGroup): void {
+    (<FormArray>skill.get("bills")).push(this.addBillFormGroup());
+  }
+
+  removeSkillButtonClick(skillGroupIndex: number): void {
+    const skillsFormArray = <FormArray>this.voucherForm.get("skills");
+    skillsFormArray.removeAt(skillGroupIndex);
+    skillsFormArray.markAsDirty();
+    skillsFormArray.markAsTouched();
+  }
+
+  addSkillFormGroup(): FormGroup {
     return this.fb.group({
       item: ["", Validators.required],
       uom: ["", Validators.required],
@@ -29,9 +43,9 @@ panelOpenState = false;
       price: ["", Validators.required],
       lotNo: ["", Validators.required],
       tax: ["", Validators.required],
-      amount:["",Validators.required],
+      amount: ["", Validators.required],
       // effectiveAmount: [""],
-      // bills: this.fb.array([this.addBillFormGroup()]),
+      bills: this.fb.array([this.addBillFormGroup()]),
       subItem: this.fb.array([this.addSubItemGroup()])
     });
   }
@@ -43,5 +57,12 @@ panelOpenState = false;
     });
   }
 
-
+  addBillFormGroup(): FormGroup {
+    return this.fb.group({
+      billSundry: ["", Validators.required],
+      value: ["", Validators.required],
+      amount: ["", Validators.required],
+      desc: ["", Validators.required]
+    });
+  }
 }

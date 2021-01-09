@@ -1,12 +1,12 @@
 <div fxLayout="row" fxLayoutAlign="space-between end" style="margin-top:20px;;font-size:10px;">
-	<div fxLayoutGap="10px" [formGroup]="sub">
+	<div fxLayoutGap="10px" [formGroup]=formGroup>
 		<mat-form-field class="example-full-width " appearance="fill" style="width:10%;">
-			<mat-label >S.No</mat-label>
-			<input matInput formControlName="serialNo">
+			<mat-label>S.No</mat-label>
+			<input matInput formControlName="subSerialNo">
     </mat-form-field>
 			<mat-form-field class="example-full-width" appearance="fill">
 				<mat-label>Description</mat-label>
-				<input matInput formControlName="subdescription">
+				<input matInput formControlName="subDescription">
     </mat-form-field>
 				<mat-form-field class="example-full-width " appearance="fill" style="width:10%;">
 					<mat-label>Qnty</mat-label>
@@ -14,7 +14,6 @@
     </mat-form-field>
 					<span style="margin-top:10px;margin-left:5px;" class="material-icons" title="delete voucher item"
           *ngIf="parentFormGroup.get('subItem')['controls'].length>1"
-          (click)="removeSubItemButtonClick(parentFormGroup,j)">delete</span>
+          (click)="removeSubItemButtonClick(parentFormGroup,parentData)">delete</span>
 	</div>
 </div>
-

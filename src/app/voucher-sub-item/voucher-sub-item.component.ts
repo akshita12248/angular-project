@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { FormGroup, FormArray } from "@angular/forms";
 
 @Component({
   selector: "app-voucher-sub-item",
@@ -7,8 +7,9 @@ import { FormGroup } from "@angular/forms";
   styleUrls: ["./voucher-sub-item.component.css"]
 })
 export class VoucherSubItemComponent implements OnInit {
-  @Input formGroup: FormGroup;
-  @Input parentFormGroup: FormGroup;
+  @Input() formGroup: FormGroup;
+  @Input() parentFormGroup: FormGroup;
+  @Input() parentData: number;
   constructor() {}
 
   ngOnInit() {}

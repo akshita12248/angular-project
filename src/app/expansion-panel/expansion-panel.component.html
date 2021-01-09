@@ -1,10 +1,10 @@
 <form [formGroup]="voucherForm">
-	<mat-accordion>
+	<mat-accordion formArrayName="skills" *ngFor="let skill of voucherForm.get('skills')['controls'];let i=index">
 		<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
 			<mat-expansion-panel-header>
 				<mat-panel-description class="voucherItems">
 
-					<div formArrayName="skills" *ngFor="let skill of voucherForm.get('skills')['controls'];let i=index">
+					<div>
 						<div fxLayoutGap="10px" [formGroupName]="i">
 							<mat-form-field class="item" appearance="fill">
 								<mat-label [attr.for]="'item'+i">Item</mat-label>
@@ -35,33 +35,34 @@
 														<mat-label [attr.for]="'amount'+i">Amount</mat-label>
 														<input matInput [id]="'amount'+i" formControlName="amount">
     </mat-form-field>
-														<span style="margin-top:20px" class="material-icons" title="delete voucher item">delete</span>
+														<span style="margin-top:20px" class="material-icons" title="delete voucher item"
+                            (click)="removeSkillButtonClick(i)" *ngIf="voucherForm.get('skills')['controls'].length>1"
+                            >delete</span>
 						</div>
 					</div>
 
 				</mat-panel-description>
 			</mat-expansion-panel-header>
-			<app-voucher-sub-item *ngFor="let sub of skill.get('subItem')['controls'];let j=index" 
-      [formGroup]="sub" [parentFormGroup]="skill">
-      </app-voucher-sub-item>
-      <div>
-			<button mat-raised-button style="font-size:10px;" (click)="addSubItem(skill)">Add Sub Item</button>
-		</div>
-			<app-voucher-bill-sundry></app-voucher-bill-sundry>
-			<!-- <div fxLayoutAlign="row" fxLayoutGap="10px" style="margin-right:65px;">
-				<p>Taxable Amount:</p>
-				<mat-form-field class="example-full-width" appearance="fill">
-					<input matInput>
-    </mat-form-field>
-			</div> -->
-
+			<app-voucher-sub-item *ngFor="let sub of skill.get('subItem')['controls'];let j=index" [formGroup]="sub"
+				[parentFormGroup]="skill" [parentData]="j">
+			</app-voucher-sub-item>
+			<div>
+				<button mat-raised-button style="font-size:10px;" (click)="addSubItem(skill)">Add Sub Item</button>
+			</div>
+			<app-voucher-bill-sundry *ngFor="let bill of skill.get('bills')['controls'];let j=index" [formGroup]="bill"
+				[parentFormGroup]="skill" [parentData]="j"></app-voucher-bill-sundry>
+			<div fxLayoutAlign="center" style="margin-left:130px">
+				<button mat-raised-button style="font-size:10px" type="button" (click)="addBillSundryClick(skill)">
+      Add Bill Sundry
+    </button>
+			</div>
 		</mat-expansion-panel>
 	</mat-accordion>
 
-	<div class="form-group" fxLayoutAlign="row">
+	<div class="form-group" fxLayoutAlign="end">
 		<div class="col-md-offset-2 col-md-4">
 			<button mat-raised-button color="primary" type="button"  (click)="addSkillButtonClick()"
-         style="margin-left:590px">
+         style="margin:10px">
       Add Voucher
     </button>
 		</div>
