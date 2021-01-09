@@ -1,41 +1,60 @@
 <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [formGroup]="formGroup">
 	<mat-expansion-panel-header>
 		<mat-panel-description class="voucherItems">
-			<div>
-				<div fxLayoutGap="10px">
-					<mat-form-field class="item" appearance="fill">
-						<mat-label [attr.for]="'item'+parentData">Item</mat-label>
-						<input matInput matInput [id]="'item'+parentData" formControlName="item">
-    </mat-form-field>
-						<mat-form-field class="example-full-width inputs" appearance="fill">
-							<mat-label [attr.for]="'uom'+parentData">UOM</mat-label>
-							<input matInput [id]="'uom'+parentData" formControlName="uom">
-    </mat-form-field>
-							<mat-form-field class="example-full-width inputs" appearance="fill">
-								<mat-label [attr.for]="'quantity'+parentData">Qnty</mat-label>
-								<input matInput [id]="'quantity'+parentData" formControlName="quantity">
-    </mat-form-field>
-								<mat-form-field class="example-full-width inputs" appearance="fill">
-									<mat-label [attr.for]="'price'+parentData">Price</mat-label>
-									<input matInput [id]="'price'+parentData" formControlName="price">
-    </mat-form-field>
-									<mat-form-field class="example-full-width inputs" appearance="fill">
-										<mat-label [attr.for]="'lotNo'+parentData">Lot No</mat-label>
-										<input matInput [id]="'lotNo'+parentData" formControlName="lotNo">
-    </mat-form-field>
-										<mat-form-field class="example-full-width taxInputs" appearance="fill">
-											<mat-label [attr.for]="'tax'+parentData">TAX</mat-label>
-											<input matInput [id]="'tax'+parentData" formControlName="tax">
-    </mat-form-field>
-											<mat-form-field class="example-full-width taxInputs" appearance="fill">
-												<mat-label [attr.for]="'amount'+parentData">Amount</mat-label>
-												<input matInput [id]="'amount'+parentData" formControlName="amount">
-    </mat-form-field>
-												<span style="margin-top:20px" class="material-icons" title="delete voucher item"
-                            (click)="removeSkillButtonClick()" *ngIf="parentFormGroup.get('skills')['controls'].length>1"
-                            >delete</span>
-				</div>
+			<div fxLayoutGap="10px">
+				<mat-form-field class="item" appearance="fill"
+					[ngClass]="{'has-error':formGroup.get('item').invalid && formGroup.get('item').touched }">
+					<mat-label [attr.for]="'item'+parentData">Item</mat-label>
+					<input matInput matInput [id]="'item'+parentData" formControlName="item">
+					<mat-error *ngIf="formGroup.get('item').errors?.required && formGroup.get('item').touched">
+						Item is required</mat-error>
+				</mat-form-field>
+				<mat-form-field class="example-full-width inputs" appearance="fill"
+					[ngClass]="{'has-error':formGroup.get('uom').invalid && formGroup.get('uom').touched }">
+					<mat-label [attr.for]="'uom'+parentData">UOM</mat-label>
+					<input matInput [id]="'uom'+parentData" formControlName="uom">
+					<mat-error *ngIf="formGroup.get('uom').errors?.required && formGroup.get('uom').touched">
+						UOM is required</mat-error>
+				</mat-form-field>
+				<mat-form-field class="example-full-width inputs" appearance="fill"
+					[ngClass]="{'has-error':formGroup.get('quantity').invalid && formGroup.get('quantity').touched }">
+					<mat-label [attr.for]="'quantity'+parentData">Qnty</mat-label>
+					<input matInput [id]="'quantity'+parentData" formControlName="quantity">
+					<mat-error *ngIf="formGroup.get('quantity').errors?.required && formGroup.get('quantity').touched">
+						Quantity is required</mat-error>
+				</mat-form-field>
+				<mat-form-field class="example-full-width inputs" appearance="fill"
+					[ngClass]="{'has-error':formGroup.get('price').invalid && formGroup.get('price').touched }">
+					<mat-label [attr.for]="'price'+parentData">Price</mat-label>
+					<input matInput [id]="'price'+parentData" formControlName="price">
+					<mat-error *ngIf="formGroup.get('price').errors?.required && formGroup.get('price').touched">
+						Price is required</mat-error>
+				</mat-form-field>
+				<mat-form-field class="example-full-width inputs" appearance="fill"
+					[ngClass]="{'has-error':formGroup.get('lotNo').invalid && formGroup.get('lotNo').touched }">
+					<mat-label [attr.for]="'lotNo'+parentData">Lot No</mat-label>
+					<input matInput [id]="'lotNo'+parentData" formControlName="lotNo">
+					<mat-error *ngIf="formGroup.get('lotNo').errors?.required && formGroup.get('lotNo').touched">
+						LotNo is required</mat-error>
+				</mat-form-field>
+				<mat-form-field class="example-full-width taxInputs" appearance="fill"
+					[ngClass]="{'has-error':formGroup.get('tax').invalid && formGroup.get('tax').touched }">
+					<mat-label [attr.for]="'tax'+parentData">TAX</mat-label>
+					<input matInput [id]="'tax'+parentData" formControlName="tax">
+					<mat-error *ngIf="formGroup.get('tax').errors?.required && formGroup.get('tax').touched">
+						Tax is required</mat-error>
+				</mat-form-field>
+				<mat-form-field class="example-full-width taxInputs" appearance="fill">
+					<mat-label [attr.for]="'amount'+parentData">Amount</mat-label>
+					<input matInput [id]="'amount'+parentData" formControlName="amount">
+					<mat-error *ngIf="formGroup.get('amount').errors?.required && formGroup.get('lotNo').touched">
+						Amount is required</mat-error>
+				</mat-form-field>
+				<span class="material-icons" title="delete voucher item"
+        (click)="removeSkillButtonClick()" *ngIf="parentFormGroup.get('skills')['controls'].length>1">
+        delete</span>
 			</div>
+
 
 		</mat-panel-description>
 	</mat-expansion-panel-header>

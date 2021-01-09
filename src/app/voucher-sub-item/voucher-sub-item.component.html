@@ -1,6 +1,7 @@
-<div fxLayout="row" fxLayoutAlign="space-between end" style="font-size:10px;">
+<div fxLayout="row" fxLayoutAlign="space-between end" style="font-size:10px;margin-top:5px;">
 	<div fxLayoutGap="10px" [formGroup]="formGroup">
-		<mat-form-field class="example-full-width " appearance="fill" style="width:10%;">
+		<mat-form-field class="example-full-width " appearance="fill" style="width:10%;"
+    [ngClass]="{'has-error':sub.get('subQuantity').invalid && sub.get('subQuantity').touched }">
 			<mat-label>S.No</mat-label>
 			<input matInput formControlName="subSerialNo">
     </mat-form-field>
