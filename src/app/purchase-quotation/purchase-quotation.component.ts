@@ -37,6 +37,7 @@ export class PurchaseQuotationComponent implements OnInit {
       invNumber: ["", [Validators.required, CustomValidator.numeric]],
       conversionRate: ["", [Validators.required, CustomValidator.numeric]],
       currency: ["", Validators.required],
+      desc: ["", Validators.required],
       skills: this.fb.array([this.addSkillFormGroup()])
     });
     // this.purchaseForm = this.fb.group({
@@ -90,7 +91,6 @@ export class PurchaseQuotationComponent implements OnInit {
 }
 
 export class CustomValidator {
-  
   static numeric(control: AbstractControl) {
     let val = control.value;
     if (val === null || val === "") return null;

@@ -63,7 +63,7 @@
 			<app-voucher-sub-item *ngFor="let sub of formGroup.get('subItem')['controls'];let j=index" [formGroup]="sub"
 				[parentFormGroup]="formGroup" [parentData]="j">
 			</app-voucher-sub-item>
-			<button mat-raised-button style="font-size:10px;" (click)="addSubItem(formGroup)">Add Sub Item</button>
+			<button mat-raised-button style="font-size:10px;margin-top:10px;" (click)="addSubItem(formGroup)">Add Sub Item</button>
 		</div>
 		<div style="font-size:10px;margin-right:65px;margin-bottom:20px">
 			<mat-label style="margin-right:10px">Effective Amount:</mat-label>
@@ -75,7 +75,7 @@
 
 	<app-voucher-bill-sundry *ngFor="let bill of formGroup.get('bills')['controls'];let j=index" [formGroup]="bill"
 		[parentFormGroup]="formGroup" [parentData]="j"></app-voucher-bill-sundry>
-	<div fxLayoutAlign="center" style="margin-left:130px">
+	<div fxLayoutAlign="center" style="margin-left:100px;margin-top:10px">
 		<button mat-raised-button style="font-size:10px" type="button" (click)="addBillSundryClick(formGroup)">
       Add Bill Sundry
     </button>

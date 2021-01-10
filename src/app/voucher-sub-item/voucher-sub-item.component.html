@@ -1,19 +1,28 @@
 <div fxLayout="row" fxLayoutAlign="space-between end" style="font-size:10px;margin-top:5px;">
 	<div fxLayoutGap="10px" [formGroup]="formGroup">
 		<mat-form-field class="example-full-width " appearance="fill" style="width:10%;"
-    [ngClass]="{'has-error':sub.get('subQuantity').invalid && sub.get('subQuantity').touched }">
+			[ngClass]="{'has-error':formGroup.get('subSerialNo').invalid && formGroup.get('subSerialNo').touched }">
 			<mat-label>S.No</mat-label>
 			<input matInput formControlName="subSerialNo">
-    </mat-form-field>
-			<mat-form-field class="example-full-width" appearance="fill">
-				<mat-label>Description</mat-label>
-				<input matInput formControlName="subDescription">
-    </mat-form-field>
-				<mat-form-field class="example-full-width " appearance="fill" style="width:10%;">
-					<mat-label>Qnty</mat-label>
-					<input matInput formControlName="subQuantity">
-    </mat-form-field>
-					<span style="margin-top:10px;margin-left:5px;" class="material-icons" title="delete voucher item"
+			<mat-error *ngIf="formGroup.get('subSerialNo').errors?.required && formGroup.get('subSerialNo').touched">
+				No is required</mat-error>
+		</mat-form-field>
+		<mat-form-field class="example-full-width" appearance="fill"
+			[ngClass]="{'has-error':formGroup.get('subDescription').invalid && formGroup.get('subDescription').touched }">
+			<mat-label>Description</mat-label>
+			<input matInput formControlName="subDescription">
+			<mat-error
+				*ngIf="formGroup.get('subDescription').errors?.required && formGroup.get('subDescription').touched">
+				Description is required</mat-error>
+		</mat-form-field>
+		<mat-form-field class="example-full-width " appearance="fill" style="width:10%;"
+			[ngClass]="{'has-error':formGroup.get('subQuantity').invalid && formGroup.get('subQuantity').touched }">
+			<mat-label>Qnty</mat-label>
+			<input matInput formControlName="subQuantity">
+			<mat-error *ngIf="formGroup.get('subQuantity').errors?.required && formGroup.get('subQuantity').touched">
+				Qnty is required</mat-error>
+		</mat-form-field>
+		<span style="margin-top:10px;margin-left:5px;" class="material-icons" title="delete voucher item"
           *ngIf="parentFormGroup.get('subItem')['controls'].length>1"
           (click)="removeSubItemButtonClick(parentFormGroup,parentData)">delete</span>
 	</div>
