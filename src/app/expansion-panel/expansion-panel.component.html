@@ -1,4 +1,5 @@
-<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [formGroup]="formGroup">
+<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [formGroup]="formGroup"
+	class="mat-elevation-z0">
 	<mat-expansion-panel-header style="margin-top:10px;">
 		<mat-panel-description class="voucherItems">
 			<div fxLayout="row">
@@ -10,16 +11,16 @@
 						<mat-error>
 							{{getItemError()}}</mat-error>
 					</mat-form-field>
-					<mat-form-field class="example-full-width inputs" appearance="fill"
+					<mat-form-field class="example-full-width" appearance="fill" style="width:8%"
 						[ngClass]="{'has-error':formGroup.get('uom').invalid && formGroup.get('uom').touched }">
-						<mat-label [attr.for]="'uom'+parentData">UOM</mat-label>
+						<mat-label [attr.for]="'uom'+parentData">Unit Of Measure</mat-label>
 						<input matInput [id]="'uom'+parentData" formControlName="uom">
 						<mat-error>
 							{{ getUomError()}}</mat-error>
 					</mat-form-field>
 					<mat-form-field class="example-full-width inputs" appearance="fill"
 						[ngClass]="{'has-error':formGroup.get('quantity').invalid && formGroup.get('quantity').touched }">
-						<mat-label [attr.for]="'quantity'+parentData">Qnty</mat-label>
+						<mat-label [attr.for]="'quantity'+parentData">Quantity</mat-label>
 						<input matInput [id]="'quantity'+parentData" formControlName="quantity">
 						<mat-error>
 							{{getQuantityError()}}</mat-error>
@@ -40,7 +41,7 @@
 					</mat-form-field>
 					<mat-form-field class="example-full-width taxInputs" appearance="fill"
 						[ngClass]="{'has-error':formGroup.get('tax').invalid && formGroup.get('tax').touched }">
-						<mat-label [attr.for]="'tax'+parentData">TAX</mat-label>
+						<mat-label [attr.for]="'tax'+parentData">Tax</mat-label>
 						<input matInput [id]="'tax'+parentData" formControlName="tax">
 						<mat-error>
 							{{getTaxError()}}</mat-error>
@@ -52,17 +53,10 @@
 							{{getAmountError()}}</mat-error>
 					</mat-form-field>
 				</div>
-				<!-- <span style="margin-top:10px">
-				<span class="material-icons" title="delete voucher item" 
-        (click)="removeSkillButtonClick()" *ngIf="parentFormGroup.get('skills')['controls'].length>1">
-        delete</span></span> -->
 				<button *ngIf="parentFormGroup.get('skills')['controls'].length==1" style="border: none; background: none;outline:none;"
             [disabled]="parentFormGroup.get('skills')['controls'].length==1 ? 'disabled' : null "><span class="material-icons" title="delete bill Sundry">delete</span></button>
 				<button *ngIf = "parentFormGroup.get('skills')['controls'].length>1" style="border: none; background: none;outline:none;"><span  class="material-icons" title="delete bill Sundry" (click)="removeSkillButtonClick()">delete</span></button>
-
-
 			</div>
-
 
 		</mat-panel-description>
 	</mat-expansion-panel-header>

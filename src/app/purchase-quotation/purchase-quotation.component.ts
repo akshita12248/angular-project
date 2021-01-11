@@ -25,13 +25,9 @@ export class PurchaseQuotationComponent implements OnInit {
   filteredOptions: Observable<string[]>;
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(""),
-      map(value => this._filter(value))
-    );
-
     this.voucherForm = this.fb.group({
       invoiceNo: ["", Validators.required],
+      account: ["", Validators.required],
       date: ["", Validators.required],
       dueDate: ["", Validators.required],
       invNumber: ["", [Validators.required, CustomValidator.numeric]],
@@ -80,18 +76,6 @@ export class PurchaseQuotationComponent implements OnInit {
     (<FormArray>this.voucherForm.get("skills")).push(this.addSkillFormGroup());
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(
-      option => option.toLowerCase().indexOf(filterValue) === 0
-    );
-  }
-  addNewAddress() {
-    let row = document.createElement("input");
-    document.querySelector(".address").appendChild(row);
-  }
-
   getDateError() {
     if (this.voucherForm.get("date").hasError("required")) {
       return "Date is required";
@@ -107,6 +91,12 @@ export class PurchaseQuotationComponent implements OnInit {
   getInvoiceNoError() {
     if (this.voucherForm.get("invoiceNo").hasError("required")) {
       return "Invoice No. is required";
+    }
+  }
+
+  getAccountError() {
+    if (this.voucherForm.get("account").hasError("required")) {
+      return "Account is required";
     }
   }
 
