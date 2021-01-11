@@ -1,21 +1,20 @@
-.invoice {
-  font-size: 15px;
-  width: 320px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.address {
-  font-size: 10px;
-  text-align: center;
-  color: blue;
-  cursor: pointer;
+.invoice {
+  /* font-size: 15px; */
+  width: 320px;
 }
 
 .date {
-  font-size: 15px;
+  /* font-size: 15px; */
   width: 150px;
 }
 
 .entryFields {
-  font-size: 15px;
+  /* font-size: 15px; */
   width: 150px;
 }
 
@@ -23,14 +22,19 @@
   margin-left: 16px;
 }
 
-.cancel {
-  margin-top: 20px;
-  font-size: 15px;
+.selectValue {
+  margin-top: 5px;
+  /* font-size: 13px; */
   margin-left: 10px;
 }
 
-.selectValue {
-  margin-top: 5px;
-  font-size: 13px;
-  margin-left: 10px;
+/* .example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+} */
+
+.example-sidenav {
+  padding: 20px;
 }

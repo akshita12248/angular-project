@@ -23,4 +23,22 @@ export class VoucherSubItemComponent implements OnInit {
     sunItemFormArray.markAsDirty();
     sunItemFormArray.markAsTouched();
   }
+
+  getSerialNoError() {
+    if (this.formGroup.get("subSerialNo").hasError("required")) {
+      return "S.No is required";
+    } 
+  }
+
+  getDescriptionError() {
+    if (this.formGroup.get("subDescription").hasError("required")) {
+      return "Description is required";
+    } 
+  }
+
+  getQuantityError() {
+    if (this.formGroup.get("subQuantity").hasError("required")) {
+      return "Qnty is required";
+    } 
+  }
 }

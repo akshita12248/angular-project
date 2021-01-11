@@ -1,114 +1,141 @@
-<form [formGroup]="voucherForm">
-	<div fxLayout="column" fxLayoutGap="10px">
+<mat-drawer-container class="example-container" autosize style="background-color:white;">
+	<mat-drawer #drawer class="example-sidenav" mode="over" position="end">
+		<app-side-nav></app-side-nav>
 
-		<mat-form-field class="example-full-width" class="invoice"
-    	[ngClass]="{'has-error':voucherForm.get('invoiceNo').invalid && voucherForm.get('invoiceNo').touched }">
-			<mat-label>Invoice No.</mat-label>
-			<input matInput formControlName="invoiceNo">
-      	<mat-error *ngIf="voucherForm.get('invoiceNo').errors?.required && voucherForm.get('invoiceNo').touched">
-			Invoice no is required</mat-error>
-    </mat-form-field>
-			<div fxLayout="row" fxLayoutGap="70px">
-				<div fxLayout="column">
-					<mat-label>Billing Address</mat-label>
-					<p class="address" color="primary">Add new address</p>
+	</mat-drawer>
+	<mat-toolbar style="background-color:#BFF6FA;" fxLayoutAlign="space-between">
+		<span style="margin-top:15px;">Purchase Quotation</span>
+		<button mat-icon-button color="accent" aria-label="Example icon button with a menu icon"
+      (click)="drawer.toggle()" style="margin-top:15px;">
+        <mat-icon>menu</mat-icon>
+      </button>
+	</mat-toolbar>
+
+	<form [formGroup]="voucherForm">
+		<div fxLayout="column" fxLayoutGap="10px" style="font-size:13px;margin-top:10px">
+			<div fxLayout="row" fxLayoutAlign="space-between">
+				<div fxLayout="row" fxLayoutGap="30px">
+					<div>
+						<mat-form-field class="example-full-width" class="invoice"
+							[ngClass]="{'has-error':voucherForm.get('invoiceNo').invalid && voucherForm.get('invoiceNo').touched }"
+							appearance="fill">
+							<mat-label>Invoice No.</mat-label>
+							<input matInput formControlName="invoiceNo">
+							<mat-error>{{getInvoiceNoError()}}</mat-error>
+						</mat-form-field>
+					</div>
+					<div>
+						<mat-form-field class="date"
+							[ngClass]="{'has-error':voucherForm.get('date').invalid && voucherForm.get('date').touched }"
+							appearance="fill">
+							<mat-label>Date</mat-label>
+							<input matInput [matDatepicker]="picker" formControlName="date">
+							<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+							<mat-datepicker #picker></mat-datepicker>
+							<mat-error>
+								{{getDateError()}}</mat-error>
+						</mat-form-field>
+					</div>
 				</div>
-				<div fxLayout="column">
-					<mat-label>Shipping Address</mat-label>
-					<p class="address" color="primary">Add new address</p>
+				<div>
+					<mat-form-field class="example-full-width entryFields"
+						[ngClass]="{'has-error':voucherForm.get('invNumber').invalid && voucherForm.get('invNumber').touched && voucherForm.get('invNumber').errors.CustomValidator}"
+						appearance="fill">
+						<mat-label>Number</mat-label>
+						<input matInput formControlName="invNumber">
+						<mat-error>
+							{{getinvNumber()}}</mat-error>
+					</mat-form-field>
 				</div>
 			</div>
-			<div fxLayout="row" fxLayoutGap="20px">
+			<div fxLayout="row" fxLayoutGap="30px">
 				<div>
-					<mat-form-field class="date"
-          	[ngClass]="{'has-error':voucherForm.get('date').invalid && voucherForm.get('date').touched }">
-						<mat-label>Date</mat-label>
-						<input matInput [matDatepicker]="picker" formControlName="date">
-						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-						<mat-datepicker #picker></mat-datepicker>
-            	<mat-error *ngIf="voucherForm.get('date').errors?.required && voucherForm.get('date').touched">
-			Date is required</mat-error>
+					<mat-form-field class="example-full-width" class="invoice"
+						[ngClass]="{'has-error':voucherForm.get('invoiceNo').invalid && voucherForm.get('invoiceNo').touched }"
+						appearance="fill">
+						<mat-label>Account</mat-label>
+						<input matInput formControlName="invoiceNo">
+						<mat-error>{{getInvoiceNoError()}}</mat-error>
 					</mat-form-field>
 				</div>
 				<div>
 					<mat-form-field class="date"
-          	[ngClass]="{'has-error':voucherForm.get('dueDate').invalid && voucherForm.get('dueDate').touched }">
+						[ngClass]="{'has-error':voucherForm.get('dueDate').invalid && voucherForm.get('dueDate').touched }"
+						appearance="fill">
 						<mat-label>Due Date</mat-label>
 						<input matInput [matDatepicker]="picker2" formControlName="dueDate">
 						<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
 						<mat-datepicker #picker2></mat-datepicker>
-            	<mat-error *ngIf="voucherForm.get('dueDate').errors?.required && voucherForm.get('dueDate').touched">
-			Due Date is required</mat-error>
+						<mat-error>
+							{{getDueDateError()}}</mat-error>
 					</mat-form-field>
 				</div>
 			</div>
 			<div fxLayout="row" fxLayoutGap="20px">
-				<div>
-					<mat-form-field class="example-full-width entryFields"
-          	[ngClass]="{'has-error':voucherForm.get('invNumber').invalid && voucherForm.get('invNumber').touched }">
-						<mat-label>Number</mat-label>
-						<input matInput formControlName="invNumber">
-            	<mat-error *ngIf="voucherForm.get('invNumber').errors?.required && voucherForm.get('invNumber').touched">
-			Number is required</mat-error>
-					</mat-form-field>
-				</div>
-				<div>
-					<mat-form-field class="example-full-width entryFields"
-          	[ngClass]="{'has-error':voucherForm.get('conversionRate').invalid && voucherForm.get('conversionRate').touched }">
-						<mat-label>Conversion Rate</mat-label>
-						<input matInput formControlName="conversionRate">
-            	<mat-error *ngIf="voucherForm.get('conversionRate').errors?.required && voucherForm.get('conversionRate').touched">
-			Conversion Rate is required</mat-error>
-    </mat-form-field>
-				</div>
 				<div class="">
-					<mat-form-field class="example-full-width entryFields">
+					<mat-form-field class="example-full-width entryFields" appearance="fill">
 						<input type="text"
            placeholder="Currency"
            aria-label="Number"
            matInput
            [formControl]="myControl"
-           [matAutocomplete]="auto" formControlName="currency">
+           [matAutocomplete]="auto" formControlName="currency"
+           [ngClass]="{'has-error':voucherForm.get('currency').invalid && voucherForm.get('currency').touched }">
 						<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
 							<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
 								{{option}}
 							</mat-option>
 						</mat-autocomplete>
+						<mat-error>
+							{{getCurrencyError()}}
+						</mat-error>
 					</mat-form-field>
 				</div>
-			</div>
-			<div fxLayout="row" fxLayoutGap="20px">
 				<div>
-					<mat-form-field class="example-full-width" class="invoice"
-          	[ngClass]="{'has-error':voucherForm.get('desc').invalid && voucherForm.get('desc').touched }">
-						<mat-label>Description</mat-label>
-						<textarea matInput formControlName="desc"></textarea>
-            	<mat-error *ngIf="voucherForm.get('desc').errors?.required && voucherForm.get('desc').touched">
-			Description is required</mat-error>
+					<mat-form-field class="example-full-width entryFields"
+						[ngClass]="{'has-error':voucherForm.get('conversionRate').invalid && voucherForm.get('conversionRate').touched }"
+						appearance="fill">
+						<mat-label>Conversion Rate</mat-label>
+						<input matInput formControlName="conversionRate">
+						<mat-error>{{getConversionRateError()}}
+						</mat-error>
 					</mat-form-field>
 				</div>
-				<div fxLayout="column">
-					<mat-label class="cancel">Cancel</mat-label>
-					<div fxLayout="row">
-						<mat-radio-button value="1" class="selectValue">TRUE</mat-radio-button>
-						<mat-radio-button value="2" class="selectValue">FALSE</mat-radio-button>
-					</div>
-				</div>
 			</div>
-	</div>
+			<div>
+				<mat-form-field class="example-full-width" class="invoice"
+					[ngClass]="{'has-error':voucherForm.get('desc').invalid && voucherForm.get('desc').touched }"
+					appearance="fill">
+					<mat-label>Description</mat-label>
+					<textarea matInput formControlName="desc"></textarea>
+					<mat-error>{{getDescriptionError()}}
+					</mat-error>
+				</mat-form-field>
+			</div>
 
-	<mat-accordion formArrayName="skills">
-		<app-expansion-panel *ngFor="let skill of voucherForm.get('skills')['controls'];let i=index"
-			style="padding:10px;" [formGroup]="skill" [parentFormGroup]="voucherForm" [parentData]="i">
-		</app-expansion-panel>
-	</mat-accordion>
 
-	<div class="form-group" fxLayoutAlign="end">
-		<div class="col-md-offset-2 col-md-4">
-			<button mat-raised-button color="primary" type="button"  (click)="addSkillButtonClick()"
-         style="margin:10px">
+		</div>
+
+		<mat-accordion formArrayName="skills">
+			<app-expansion-panel *ngFor="let skill of voucherForm.get('skills')['controls'];let i=index"
+				style="padding:10px;" [formGroup]="skill" [parentFormGroup]="voucherForm" [parentData]="i">
+			</app-expansion-panel>
+		</mat-accordion>
+
+		<div class="form-group" fxLayoutAlign="space-between">
+			<div style="margin-top:10px;">
+				<button mat-raised-button color="primary" type="button"  (click)="addSkillButtonClick()">
       Add Item
     </button>
+			</div>
+			<div>
+				<div style="font-size:14px;">
+					<mat-label style="margin-right:10px">Final Amount:</mat-label>
+					<mat-form-field class="example-full-width" appearance="fill">
+						<input matInput >
+    </mat-form-field>
+				</div>
+			</div>
 		</div>
-	</div>
-</form>
+	</form>
+</mat-drawer-container>

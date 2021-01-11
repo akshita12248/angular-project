@@ -11,6 +11,7 @@ import { PurchaseVoucherItemRowComponent } from "./purchase-voucher-item-row/pur
 import { ExpansionPanelComponent } from './expansion-panel/expansion-panel.component';
 import { VoucherSubItemComponent } from './voucher-sub-item/voucher-sub-item.component';
 import { VoucherBillSundryComponent } from './voucher-bill-sundry/voucher-bill-sundry.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { VoucherBillSundryComponent } from './voucher-bill-sundry/voucher-bill-s
     PurchaseVoucherItemRowComponent,
     ExpansionPanelComponent,
     VoucherSubItemComponent,
-    VoucherBillSundryComponent
+    VoucherBillSundryComponent,
+    SideNavComponent
   ],
   bootstrap: [AppComponent]
 })

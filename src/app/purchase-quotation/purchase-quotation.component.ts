@@ -40,8 +40,6 @@ export class PurchaseQuotationComponent implements OnInit {
       desc: ["", Validators.required],
       skills: this.fb.array([this.addSkillFormGroup()])
     });
-    // this.purchaseForm = this.fb.group({
-    // invoiceNo: ['', Validators.required]});
   }
   addSkillFormGroup(): FormGroup {
     return this.fb.group({
@@ -53,6 +51,11 @@ export class PurchaseQuotationComponent implements OnInit {
       tax: ["", Validators.required],
       amount: ["", Validators.required],
       effectiveAmount: [""],
+      taxableAmount: [""],
+      cgstTaxableAmount: [""],
+      sgstTaxableAmount: [""],
+      cessTaxableAmount: [""],
+      finalAmount: [""],
       bills: this.fb.array([this.addBillFormGroup()]),
       subItem: this.fb.array([this.addSubItemGroup()])
     });
@@ -87,6 +90,52 @@ export class PurchaseQuotationComponent implements OnInit {
   addNewAddress() {
     let row = document.createElement("input");
     document.querySelector(".address").appendChild(row);
+  }
+
+  getDateError() {
+    if (this.voucherForm.get("date").hasError("required")) {
+      return "Date is required";
+    }
+  }
+
+  getDueDateError() {
+    if (this.voucherForm.get("dueDate").hasError("required")) {
+      return "Due Date is required";
+    }
+  }
+
+  getInvoiceNoError() {
+    if (this.voucherForm.get("invoiceNo").hasError("required")) {
+      return "Invoice No. is required";
+    }
+  }
+
+  getConversionRateError() {
+    if (this.voucherForm.get("conversionRate").hasError("required")) {
+      return "Conversion Rate is required";
+    } else {
+      return "Contains only numeric digits";
+    }
+  }
+
+  getDescriptionError() {
+    if (this.voucherForm.get("desc").hasError("required")) {
+      return "Description is required";
+    }
+  }
+
+  getCurrencyError() {
+    if (this.voucherForm.get("currency").hasError("required")) {
+      return "Currency is required";
+    }
+  }
+
+  getinvNumber() {
+    if (this.voucherForm.get("invNumber").hasError("required")) {
+      return "No. is required";
+    } else {
+      return "Contains only numeric digits";
+    }
   }
 }
 

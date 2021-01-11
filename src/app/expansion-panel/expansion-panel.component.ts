@@ -1,5 +1,11 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  Validators
+} from "@angular/forms";
 
 @Component({
   selector: "app-expansion-panel",
@@ -41,6 +47,11 @@ export class ExpansionPanelComponent implements OnInit {
       tax: ["", Validators.required],
       amount: ["", Validators.required],
       effectiveAmount: [""],
+      taxableAmount: [""],
+      cgstTaxableAmount:[""],
+      sgstTaxableAmount:[""],
+      cessTaxableAmount:[""],
+      finalAmount:[""],
       bills: this.fb.array([this.addBillFormGroup()]),
       subItem: this.fb.array([this.addSubItemGroup()])
     });
@@ -60,5 +71,63 @@ export class ExpansionPanelComponent implements OnInit {
       amount: ["", Validators.required],
       desc: ["", Validators.required]
     });
+  }
+
+  getItemError() {
+    if (this.formGroup.get("item").hasError("required")) {
+      return "Item is required";
+    }
+  }
+
+  getUomError() {
+    if (this.formGroup.get("uom").hasError("required")) {
+      return "UOM is required";
+    }
+  }
+
+  getPriceError() {
+    if (this.formGroup.get("price").hasError("required")) {
+      return "Price is required";
+    }
+  }
+
+  getQuantityError() {
+    if (this.formGroup.get("quantity").hasError("required")) {
+      return "Quantity is required";
+    }
+  }
+
+  getLotNoError() {
+    if (this.formGroup.get("lotNo").hasError("required")) {
+      return "Lot No is required";
+    }
+  }
+
+  getTaxError() {
+    if (this.formGroup.get("tax").hasError("required")) {
+      return "Tax is required";
+    }
+  }
+
+  getAmountError() {
+    if (this.formGroup.get("amount").hasError("required")) {
+      return "Amount is required";
+    }
+  }
+
+  getSerialNoError() {
+    if (this.formGroup.get("subSerialNo").hasError("required")) {
+      return "S.No is required";
+    }
+  }
+}
+
+export class CustomValidator {
+  static numeric(control: AbstractControl) {
+    let val = control.value;
+    if (val === null || val === "") return null;
+    if (!val.toString().match(/^[0-9]+(\.?[0-9]+)?$/))
+      return { invalidNumber: true };
+    return null;
   }
 }
