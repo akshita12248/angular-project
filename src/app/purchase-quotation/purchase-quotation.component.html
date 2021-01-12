@@ -1,4 +1,5 @@
-<mat-drawer-container class="example-container" autosize style="background-color:white;">
+<mat-drawer-container class="example-container" autosize style="background-color:white"
+	[ngStyle.sm]="{'font-size.px': 8}" [ngStyle.gt-sm]="{'font-size.px': 9}" [ngStyle.lg]="{'font-size.px': 12}">
 	<mat-drawer #drawer class="example-sidenav" mode="over" position="end">
 		<app-side-nav></app-side-nav>
 
@@ -12,31 +13,29 @@
 	</mat-toolbar>
 
 	<form [formGroup]="voucherForm">
-		<div fxLayout="column" fxLayoutGap="10px" [ngStyle.sm]="{'font-size.px': 6}"
-			style="font-size:13px;margin-top:10px;margin-left:25px;">
-			<div fxLayout="row" fxLayout.sm="row" fxLayoutAlign="space-between" fxLayoutAlign.sm="space-between">
-				<div fxLayout="row" fxLayoutGap="13px" fxLayout.sm="column">
-					<div>
-						<mat-form-field appearance="fill">
-							<mat-label>Invoice No.</mat-label>
-							<input matInput formControlName="invoiceNo">
-							<mat-error>{{getInvoiceNoError()}}</mat-error>
-						</mat-form-field>
-					</div>
-					<div>
-						<mat-form-field appearance="fill">
-							<mat-label>Date</mat-label>
-							<input matInput [matDatepicker]="picker" formControlName="date">
-							<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-							<mat-datepicker #picker></mat-datepicker>
-							<mat-error>
-								{{getDateError()}}</mat-error>
-						</mat-form-field>
-					</div>
+		<div fxLayout="column" fxLayoutGap="10px" fxLayoutGap.sm="8px"
+			style="margin-top:10px;margin-left:25px;margin-right:65px">
+			<div fxLayout="row" fxLayout.sm="row" fxLayout.gt-sm="row" fxLayoutAlign="space-between"
+				fxLayoutAlign.sm="space-between" fxFlex="100%" fxFlex.sm="100%" fxFlex.gt-sm="100%">
+				<div fxLayout="row" fxLayout.sm="row" fxLayoutGap="13px" fxFlex="70%" fxFlex.sm="70%">
+					<mat-form-field appearance="fill" fxFlex="40%" fxFlex.sm="45%" fxFlex.gt-sm="40%">
+						<mat-label>Invoice No.</mat-label>
+						<input matInput formControlName="invoiceNo">
+						<mat-error>{{getInvoiceNoError()}}</mat-error>
+					</mat-form-field>
+					<mat-form-field appearance="fill" fxFlex="20%" fxFlex.sm="23%" fxFlex.gt-sm="20%">
+						<mat-label>Date</mat-label>
+						<input matInput [matDatepicker]="picker" formControlName="date">
+						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+						<mat-datepicker #picker></mat-datepicker>
+						<mat-error>
+							{{getDateError()}}</mat-error>
+					</mat-form-field>
+
 				</div>
-				<div>
-					<mat-form-field appearance="fill" fxFlex.sm="70%" [ngStyle]="{'margin-right.px':90}"
-						[ngStyle.sm]="{'margin-left.px':50}">
+				<div fxFlex="20%" fxFlex.sm="20%" fxFlex.gt-sm="20%">
+					<mat-form-field appearance="fill" [ngStyle.sm]="{'margin-left.px':50}" fxFlex="100%"
+						fxFlex.sm="100%" fxFlex.gt-sm="100%" [ngStyle.gt-sm]="{'margin-left.px':15}">
 						<mat-label>Number</mat-label>
 						<input matInput formControlName="invNumber">
 						<mat-error>
@@ -44,46 +43,39 @@
 					</mat-form-field>
 				</div>
 			</div>
-			<div fxLayout="row" fxLayoutGap="13px">
-				<div>
-					<mat-form-field appearance="fill">
-						<mat-label>Account</mat-label>
-						<input matInput formControlName="account">
-						<mat-error>{{getAccountError()}}</mat-error>
-					</mat-form-field>
-				</div>
-				<div>
-					<mat-form-field appearance="fill">
-						<mat-label>Due Date</mat-label>
-						<input matInput [matDatepicker]="picker2" formControlName="dueDate">
-						<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-						<mat-datepicker #picker2></mat-datepicker>
-						<mat-error>
-							{{getDueDateError()}}</mat-error>
-					</mat-form-field>
-				</div>
+			<div fxLayout="row" fxLayout.sm="row" fxLayoutGap="13px" fxFlex="100%" fxFlex.sm="100%">
+				<mat-form-field appearance="fill" fxFlex="28%" fxFlex.sm="32%" fxFlex.gt-sm="28%">
+					<mat-label>Account</mat-label>
+					<input matInput formControlName="account">
+					<mat-error>{{getAccountError()}}</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="fill" fxFlex="14%" fxFlex.sm="16%" fxFlex.gt-sm="14%">
+					<mat-label>Due Date</mat-label>
+					<input matInput [matDatepicker]="picker2" formControlName="dueDate">
+					<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+					<mat-datepicker #picker2></mat-datepicker>
+					<mat-error>
+						{{getDueDateError()}}</mat-error>
+				</mat-form-field>
 			</div>
-			<div fxLayout="row" fxLayoutGap="13px" fxLayout.xs='column'>
-				<div>
-					<mat-form-field appearance="fill">
-						<mat-label>Currency</mat-label>
-						<input matInput formControlName="currency">
-						<mat-error>
-							{{getCurrencyError()}}
-						</mat-error>
-					</mat-form-field>
-				</div>
-				<div>
-					<mat-form-field appearance="fill">
-						<mat-label>Conversion Rate</mat-label>
-						<input matInput formControlName="conversionRate">
-						<mat-error>{{getConversionRateError()}}
-						</mat-error>
-					</mat-form-field>
-				</div>
+			<div fxLayout="row" fxLayoutGap="13px" fxLayout.xs='column' fxFlex="100%" fxFlex.sm="100%"
+				fxFlex.gt-sm="100%">
+				<mat-form-field appearance="fill" fxFlex="28%" fxFlex.sm="32%" fxFlex.gt-sm="28%">
+					<mat-label>Currency</mat-label>
+					<input matInput formControlName="currency">
+					<mat-error>
+						{{getCurrencyError()}}
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="fill" fxFlex="14%" fxFlex.sm="16%" fxFlex.gt-sm="14%">
+					<mat-label>Conversion Rate</mat-label>
+					<input matInput formControlName="conversionRate">
+					<mat-error>{{getConversionRateError()}}
+					</mat-error>
+				</mat-form-field>
 			</div>
-			<div>
-				<mat-form-field appearance="fill">
+			<div fxFlex="100%">
+				<mat-form-field appearance="fill" fxFlex="28%" fxFlex.sm="32%" fxFlex.gt-sm="28%">
 					<mat-label>Description</mat-label>
 					<textarea matInput formControlName="desc"></textarea>
 					<mat-error>{{getDescriptionError()}}
@@ -107,7 +99,7 @@
     </button>
 			</div>
 			<div>
-				<div style="font-size:14px;margin-right:93px;">
+				<div style="margin-right:93px;">
 					<mat-label style="margin-right:10px">Final Amount:</mat-label>
 					<mat-form-field appearance="fill">
 						<input matInput >

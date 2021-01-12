@@ -2,22 +2,6 @@
   margin-left: 8px;
 }
 
-.item {
-  width: 26%;
-}
-
-.inputs {
-  width: 8%;
-}
-
-.taxInputs {
-  width: 16%;
-}
-
-.voucherItems {
-  font-size: 10px;
-}
-
 .mat-expansion-panel:not(.mat-expanded)
   .mat-expansion-panel-header:not([aria-disabled="true"]):hover {
   background: white;
