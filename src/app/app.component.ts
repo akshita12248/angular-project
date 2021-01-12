@@ -22,6 +22,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       (change: MediaChange) => {
         console.log(change.mqAlias);
         console.log(change);
+        this.cdRef.markForCheck();
       }
     );
   }

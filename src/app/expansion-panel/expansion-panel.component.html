@@ -1,61 +1,62 @@
 <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [formGroup]="formGroup"
 	class="mat-elevation-z0">
-	<mat-expansion-panel-header style="margin-top:10px;">
+	<mat-expansion-panel-header>
 		<mat-panel-description class="voucherItems">
-			<div fxLayout="row">
-				<div fxLayoutGap="15px">
-					<mat-form-field class="item" appearance="fill"
-						[ngClass]="{'has-error':formGroup.get('item').invalid && formGroup.get('item').touched }">
-						<mat-label [attr.for]="'item'+parentData">Item</mat-label>
-						<input matInput matInput [id]="'item'+parentData" formControlName="item">
+			<div fxLayout="row" [ngStyle.sm]="{'font-size.px': 6}">
+				<div fxLayoutGap="3px" fxLayoutGap.sm="2px">
+					<mat-form-field appearance="fill" fxFlex="21%" fxFlex.sm="9%">
+						<mat-label>Item</mat-label>
+						<input matInput formControlName="item">
 						<mat-error>
 							{{getItemError()}}</mat-error>
 					</mat-form-field>
-					<mat-form-field class="example-full-width" appearance="fill" style="width:8%"
-						[ngClass]="{'has-error':formGroup.get('uom').invalid && formGroup.get('uom').touched }">
-						<mat-label [attr.for]="'uom'+parentData">Unit Of Measure</mat-label>
-						<input matInput [id]="'uom'+parentData" formControlName="uom">
+					<mat-form-field appearance="fill" fxFlex="8%" fxFlex.sm="5%">
+						<mat-label>Unit Of Measure</mat-label>
+						<input matInput formControlName="uom">
 						<mat-error>
 							{{ getUomError()}}</mat-error>
 					</mat-form-field>
-					<mat-form-field class="example-full-width inputs" appearance="fill"
-						[ngClass]="{'has-error':formGroup.get('quantity').invalid && formGroup.get('quantity').touched }">
-						<mat-label [attr.for]="'quantity'+parentData">Quantity</mat-label>
-						<input matInput [id]="'quantity'+parentData" formControlName="quantity">
+					<mat-form-field appearance="fill" fxFlex="8%" fxFlex.sm="4%">
+						<mat-label>Quantity</mat-label>
+						<input matInput formControlName="quantity">
 						<mat-error>
 							{{getQuantityError()}}</mat-error>
 					</mat-form-field>
-					<mat-form-field class="example-full-width inputs" appearance="fill"
-						[ngClass]="{'has-error':formGroup.get('price').invalid && formGroup.get('price').touched }">
-						<mat-label [attr.for]="'price'+parentData">Price</mat-label>
-						<input matInput [id]="'price'+parentData" formControlName="price">
+					<mat-form-field appearance="fill" fxFlex="8%" fxFlex.sm="4%">
+						<mat-label>Price</mat-label>
+						<input matInput formControlName="price">
 						<mat-error>
 							{{getPriceError()}}</mat-error>
 					</mat-form-field>
-					<mat-form-field class="example-full-width inputs" appearance="fill"
-						[ngClass]="{'has-error':formGroup.get('lotNo').invalid && formGroup.get('lotNo').touched }">
-						<mat-label [attr.for]="'lotNo'+parentData">Lot No</mat-label>
-						<input matInput [id]="'lotNo'+parentData" formControlName="lotNo">
+					<mat-form-field appearance="fill" fxFlex="8%" fxFlex.sm="4%">
+						<mat-label>Lot No</mat-label>
+						<input matInput formControlName="lotNo">
 						<mat-error>
 							{{getLotNoError()}}</mat-error>
 					</mat-form-field>
-					<mat-form-field class="example-full-width taxInputs" appearance="fill"
-						[ngClass]="{'has-error':formGroup.get('tax').invalid && formGroup.get('tax').touched }">
-						<mat-label [attr.for]="'tax'+parentData">Tax</mat-label>
-						<input matInput [id]="'tax'+parentData" formControlName="tax">
+					<mat-form-field appearance="fill" fxFlex="13%" fxFlex.sm="5%">
+						<mat-label>Tax</mat-label>
+						<input matInput formControlName="tax">
 						<mat-error>
 							{{getTaxError()}}</mat-error>
 					</mat-form-field>
-					<mat-form-field class="example-full-width taxInputs" appearance="fill">
-						<mat-label [attr.for]="'amount'+parentData">Amount</mat-label>
-						<input matInput [id]="'amount'+parentData" formControlName="amount">
+					<mat-form-field appearance="fill" fxFlex="13%" fxFlex.sm="5%">
+						<mat-label>Amount</mat-label>
+						<input matInput formControlName="amount">
 						<mat-error>
 							{{getAmountError()}}</mat-error>
 					</mat-form-field>
+
+					<!-- <button *ngIf="parentFormGroup.get('skills')['controls'].length==1" style="border: none; background: none;outline:none;"
+            [disabled]="parentFormGroup.get('skills')['controls'].length==1 ? 'disabled' : null "><span class="material-icons" title="delete bill Sundry" >delete</span></button>
+				<button *ngIf = "parentFormGroup.get('skills')['controls'].length>1" style="border: none; background: none;outline:none;"><span  class="material-icons" title="delete bill Sundry" (click)="removeSkillButtonClick()"
+       >delete</span></button> -->
+					<button mat-icon-button color="accent"
+          [disabled]="parentFormGroup.get('skills')['controls'].length <= 1 "
+          (click)="removeSkillButtonClick()">
+        <mat-icon fxFlex.sm="5%" [ngStyle.sm]="{'margin-bottom.px': 12,'font-size.px':13}">clear</mat-icon>
+      </button>
 				</div>
-				<button *ngIf="parentFormGroup.get('skills')['controls'].length==1" style="border: none; background: none;outline:none;"
-            [disabled]="parentFormGroup.get('skills')['controls'].length==1 ? 'disabled' : null "><span class="material-icons" title="delete bill Sundry">delete</span></button>
-				<button *ngIf = "parentFormGroup.get('skills')['controls'].length>1" style="border: none; background: none;outline:none;"><span  class="material-icons" title="delete bill Sundry" (click)="removeSkillButtonClick()">delete</span></button>
 			</div>
 
 		</mat-panel-description>
@@ -69,7 +70,7 @@
 		</div>
 		<div style="font-size:10px;margin-right:70px;margin-bottom:20px">
 			<mat-label style="margin-right:10px">Effective Amount:</mat-label>
-			<mat-form-field class="example-full-width" appearance="fill">
+			<mat-form-field appearance="fill">
 				<input matInput formControlName="effectiveAmount">
     </mat-form-field>
 		</div>
@@ -77,7 +78,7 @@
 
 	<app-voucher-bill-sundry *ngFor="let bill of formGroup.get('bills')['controls'];let j=index" [formGroup]="bill"
 		[parentFormGroup]="formGroup" [parentData]="j"></app-voucher-bill-sundry>
-	<div fxLayoutAlign="center" style="margin-left:140px;margin-top:10px">
+	<div fxLayoutAlign="center" style="margin-left:170px;margin-top:10px">
 		<button mat-raised-button style="font-size:10px" type="button" (click)="addBillSundryClick(formGroup)">
       Add Bill Sundry
     </button>
@@ -86,31 +87,31 @@
 	<div style="font-size:10px;margin-right:70px" fxLayoutAlign="end end" fxLayout="column">
 		<div>
 			<mat-label style="margin-right:10px;margin-top:10px">Taxable Amount:</mat-label>
-			<mat-form-field class="example-full-width" appearance="fill">
+			<mat-form-field appearance="fill">
 				<input matInput formControlName="taxableAmount">
     </mat-form-field>
 		</div>
 		<div>
 			<mat-label style="margin-right:10px;margin-top:10px">cgst@20%2000:</mat-label>
-			<mat-form-field class="example-full-width taxFields" appearance="fill">
+			<mat-form-field appearance="fill">
 				<input matInput formControlName="cgstTaxableAmount">
     </mat-form-field>
 		</div>
 		<div>
 			<mat-label style="margin-right:10px;margin-top:10px">sgst@20%2000:</mat-label>
-			<mat-form-field class="example-full-width " appearance="fill">
+			<mat-form-field appearance="fill">
 				<input matInput formControlName="sgstTaxableAmount">
     </mat-form-field>
 		</div>
 		<div>
 			<mat-label style="margin-right:10px;margin-top:10px">cess@20%2000</mat-label>
-			<mat-form-field class="example-full-width " appearance="fill">
+			<mat-form-field appearance="fill">
 				<input matInput formControlName="cessTaxableAmount">
     </mat-form-field>
 		</div>
 		<div>
 			<mat-label style="margin-right:10px;margin-top:10px;font-size:20px;">Amount</mat-label>
-			<mat-form-field class="example-full-width" appearance="fill">
+			<mat-form-field appearance="fill">
 				<input matInput formControlName="finalAmount">
     </mat-form-field>
 		</div>

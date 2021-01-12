@@ -1,28 +1,28 @@
 <div fxLayout="row" fxLayoutAlign="space-between end" style="font-size:10px;margin-top:5px;">
 	<div fxLayoutGap="10px" [formGroup]="formGroup">
-		<mat-form-field class="example-full-width " appearance="fill" style="width:10%;"
-			[ngClass]="{'has-error':formGroup.get('subSerialNo').invalid && formGroup.get('subSerialNo').touched }">
+		<mat-form-field appearance="fill" fxFlex="8%">
 			<mat-label>S.No</mat-label>
 			<input matInput formControlName="subSerialNo">
 			<mat-error>
 				{{getSerialNoError()}}</mat-error>
 		</mat-form-field>
-		<mat-form-field class="example-full-width" appearance="fill"
-			[ngClass]="{'has-error':formGroup.get('subDescription').invalid && formGroup.get('subDescription').touched }">
+		<mat-form-field appearance="fill" fxFlex="35%">
 			<mat-label>Description</mat-label>
 			<input matInput formControlName="subDescription">
 			<mat-error>
 				{{getDescriptionError()}}</mat-error>
 		</mat-form-field>
-		<mat-form-field class="example-full-width " appearance="fill" style="width:10%;"
-			[ngClass]="{'has-error':formGroup.get('subQuantity').invalid && formGroup.get('subQuantity').touched }">
+		<mat-form-field appearance="fill" fxFlex="8%">
 			<mat-label>Qnty</mat-label>
 			<input matInput formControlName="subQuantity">
 			<mat-error>
 				{{getQuantityError()}} </mat-error>
 		</mat-form-field>
-		<span style="margin-top:10px;margin-left:5px;" class="material-icons" title="delete voucher item"
-          *ngIf="parentFormGroup.get('subItem')['controls'].length>1"
-          (click)="removeSubItemButtonClick(parentFormGroup,parentData)">delete</span>
+		<button mat-icon-button color="accent"
+          [disabled]="parentFormGroup.get('subItem')['controls'].length <= 1 "
+          (click)="removeSubItemButtonClick(parentFormGroup,parentData)">
+        <mat-icon fxFlex.sm="5%" [ngStyle.sm]="{'margin-bottom.px': 12,'font-size.px':13}">clear</mat-icon>
+      </button>
+
 	</div>
 </div>

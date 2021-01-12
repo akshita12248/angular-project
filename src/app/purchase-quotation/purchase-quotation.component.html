@@ -5,30 +5,26 @@
 	</mat-drawer>
 	<mat-toolbar style="background-color:#BFF6FA;" fxLayoutAlign="space-between">
 		<span style="margin-top:15px;">Purchase Quotation</span>
-		<button mat-icon-button color="accent" aria-label="Example icon button with a menu icon"
+		<button mat-icon-button color="accent"
       (click)="drawer.toggle()" style="margin-top:15px;">
         <mat-icon>menu</mat-icon>
       </button>
 	</mat-toolbar>
 
 	<form [formGroup]="voucherForm">
-		<div fxLayout="column" fxLayoutGap="10px" fxLayout.xs='column' [ngStyle.xs]="{'font-size.px': 6,width:'100%'}"
-			style="font-size:13px;margin-top:10px;margin-left:25px;margin-right:95px">
-			<div fxLayout="row" fxLayoutAlign="space-between" fxLayout.xs='column'>
-				<div fxLayout="row" fxLayoutGap="30px" fxLayout.xs='column'>
+		<div fxLayout="column" fxLayoutGap="10px" [ngStyle.sm]="{'font-size.px': 6}"
+			style="font-size:13px;margin-top:10px;margin-left:25px;">
+			<div fxLayout="row" fxLayout.sm="row" fxLayoutAlign="space-between" fxLayoutAlign.sm="space-between">
+				<div fxLayout="row" fxLayoutGap="13px" fxLayout.sm="column">
 					<div>
-						<mat-form-field class="example-full-width" class="invoice"
-							[ngClass]="{'has-error':voucherForm.get('invoiceNo').invalid && voucherForm.get('invoiceNo').touched }"
-							appearance="fill">
+						<mat-form-field appearance="fill">
 							<mat-label>Invoice No.</mat-label>
 							<input matInput formControlName="invoiceNo">
 							<mat-error>{{getInvoiceNoError()}}</mat-error>
 						</mat-form-field>
 					</div>
 					<div>
-						<mat-form-field class="date"
-							[ngClass]="{'has-error':voucherForm.get('date').invalid && voucherForm.get('date').touched }"
-							appearance="fill">
+						<mat-form-field appearance="fill">
 							<mat-label>Date</mat-label>
 							<input matInput [matDatepicker]="picker" formControlName="date">
 							<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -39,9 +35,8 @@
 					</div>
 				</div>
 				<div>
-					<mat-form-field class="example-full-width"
-						[ngClass]="{'has-error':voucherForm.get('invNumber').invalid && voucherForm.get('invNumber').touched && voucherForm.get('invNumber').errors.CustomValidator}"
-						appearance="fill">
+					<mat-form-field appearance="fill" fxFlex.sm="70%" [ngStyle]="{'margin-right.px':90}"
+						[ngStyle.sm]="{'margin-left.px':50}">
 						<mat-label>Number</mat-label>
 						<input matInput formControlName="invNumber">
 						<mat-error>
@@ -49,20 +44,16 @@
 					</mat-form-field>
 				</div>
 			</div>
-			<div fxLayout="row" fxLayoutGap="30px" fxLayout.xs='column'>
+			<div fxLayout="row" fxLayoutGap="13px">
 				<div>
-					<mat-form-field class="example-full-width" class="invoice"
-						[ngClass]="{'has-error':voucherForm.get('invoiceNo').invalid && voucherForm.get('invoiceNo').touched }"
-						appearance="fill">
+					<mat-form-field appearance="fill">
 						<mat-label>Account</mat-label>
 						<input matInput formControlName="account">
 						<mat-error>{{getAccountError()}}</mat-error>
 					</mat-form-field>
 				</div>
 				<div>
-					<mat-form-field class="date"
-						[ngClass]="{'has-error':voucherForm.get('dueDate').invalid && voucherForm.get('dueDate').touched }"
-						appearance="fill">
+					<mat-form-field appearance="fill">
 						<mat-label>Due Date</mat-label>
 						<input matInput [matDatepicker]="picker2" formControlName="dueDate">
 						<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -72,9 +63,9 @@
 					</mat-form-field>
 				</div>
 			</div>
-			<div fxLayout="row" fxLayoutGap="20px" fxLayout.xs='column'>
+			<div fxLayout="row" fxLayoutGap="13px" fxLayout.xs='column'>
 				<div>
-					<mat-form-field class="example-full-width entryFields" appearance="fill">
+					<mat-form-field appearance="fill">
 						<mat-label>Currency</mat-label>
 						<input matInput formControlName="currency">
 						<mat-error>
@@ -83,9 +74,7 @@
 					</mat-form-field>
 				</div>
 				<div>
-					<mat-form-field class="example-full-width entryFields"
-						[ngClass]="{'has-error':voucherForm.get('conversionRate').invalid && voucherForm.get('conversionRate').touched }"
-						appearance="fill">
+					<mat-form-field appearance="fill">
 						<mat-label>Conversion Rate</mat-label>
 						<input matInput formControlName="conversionRate">
 						<mat-error>{{getConversionRateError()}}
@@ -94,9 +83,7 @@
 				</div>
 			</div>
 			<div>
-				<mat-form-field class="example-full-width" class="invoice"
-					[ngClass]="{'has-error':voucherForm.get('desc').invalid && voucherForm.get('desc').touched }"
-					appearance="fill">
+				<mat-form-field appearance="fill">
 					<mat-label>Description</mat-label>
 					<textarea matInput formControlName="desc"></textarea>
 					<mat-error>{{getDescriptionError()}}
@@ -122,7 +109,7 @@
 			<div>
 				<div style="font-size:14px;margin-right:93px;">
 					<mat-label style="margin-right:10px">Final Amount:</mat-label>
-					<mat-form-field class="example-full-width" appearance="fill">
+					<mat-form-field appearance="fill">
 						<input matInput >
     </mat-form-field>
 				</div>

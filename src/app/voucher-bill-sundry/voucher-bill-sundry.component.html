@@ -1,34 +1,36 @@
 <div fxLayoutAlign="end" style="margin-right:21px;font-size:10px;" fxLayoutGap="10px" [formGroup]="formGroup">
-	<mat-form-field class="example-full-width " appearance="fill" style="width:6%;"
-		[ngClass]="{'has-error':formGroup.get('billSundry').invalid && formGroup.get('billSundry').touched }">
+	<mat-form-field appearance="fill" fxFlex="5%">
 		<mat-label>Bill Sundry</mat-label>
 		<input matInput formControlName="billSundry">
 		<mat-error>
 			{{getBillSundryError()}}</mat-error>
 	</mat-form-field>
-	<mat-form-field class="example-full-width" appearance="fill"
-		[ngClass]="{'has-error':formGroup.get('desc').invalid && formGroup.get('desc').touched }">
+	<mat-form-field appearance="fill" fxFlex="15%">
 		<mat-label>Description</mat-label>
 		<input matInput formControlName="desc">
 		<mat-error>
 			{{getDescriptionError()}}</mat-error>
 	</mat-form-field>
-	<mat-form-field class="example-full-width " appearance="fill" style="width:5%;"
-		[ngClass]="{'has-error':formGroup.get('value').invalid && formGroup.get('value').touched }">
+	<mat-form-field appearance="fill" fxFlex="5%">
 		<mat-label>Value</mat-label>
 		<input matInput formControlName="value">
 		<mat-error>
 			{{getValueError()}}</mat-error>
 	</mat-form-field>
-	<mat-form-field class="example-full-width taxInputs" appearance="fill"
-		[ngClass]="{'has-error':formGroup.get('amount').invalid && formGroup.get('amount').touched }">
+	<mat-form-field appearance="fill">
 		<mat-label>Amount</mat-label>
 		<input matInput formControlName="amount">
 		<mat-error>
 			{{getAmountError()}} </mat-error>
 	</mat-form-field>
 
-	<button *ngIf="parentFormGroup.get('bills')['controls'].length==1" style="border: none; background: none;outline:none;"
+	<button mat-icon-button color="accent"
+          [disabled]="parentFormGroup.get('bills')['controls'].length <= 1 "
+         (click)="removeVoucherButtonClick(parentFormGroup,parentData)">
+        <mat-icon fxFlex.sm="5%" [ngStyle.sm]="{'margin-bottom.px': 12,'font-size.px':13}">clear</mat-icon>
+      </button>
+
+	<!-- <button *ngIf="parentFormGroup.get('bills')['controls'].length==1" style="border: none; background: none;outline:none;"
             [disabled]="parentFormGroup.get('bills')['controls'].length==1 ? 'disabled' : null "><span class="material-icons" title="delete bill Sundry">delete</span></button>
-	<button *ngIf = "parentFormGroup.get('bills')['controls'].length>1" style="border: none; background: none;outline:none;"><span  class="material-icons" title="delete bill Sundry" (click)="removeVoucherButtonClick(parentFormGroup,parentData)">delete</span></button>
+	<button *ngIf = "parentFormGroup.get('bills')['controls'].length>1" style="border: none; background: none;outline:none;"><span  class="material-icons" title="delete bill Sundry" (click)="removeVoucherButtonClick(parentFormGroup,parentData)">delete</span></button> -->
 </div>

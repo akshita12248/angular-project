@@ -3,11 +3,11 @@
 }
 
 .item {
-  width: 27%;
+  width: 26%;
 }
 
 .inputs {
-  width: 7%;
+  width: 8%;
 }
 
 .taxInputs {
@@ -17,9 +17,7 @@
 .voucherItems {
   font-size: 10px;
 }
-/* .example-full-width{
-  height: 10px;
-} */
+
 .mat-expansion-panel:not(.mat-expanded)
   .mat-expansion-panel-header:not([aria-disabled="true"]):hover {
   background: white;
