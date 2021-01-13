@@ -1,0 +1,54 @@
+<mat-accordion>
+	<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+		<mat-expansion-panel-header>
+			<mat-panel-description>
+				<mat-label>Name</mat-label>
+			</mat-panel-description>
+		</mat-expansion-panel-header>
+		<div fxLayout.xs="column" fxFlex.xs="100%" [ngStyle.xs]="{'font-size.px':8}">
+			<mat-form-field appearance="fill">
+				<mat-label>Item</mat-label>
+				<input matInput>
+    </mat-form-field>
+				<div fxLayout.xs="row" fxLayoutGap.xs="4px" fxLayoutAlign.xs="space-between">
+					<mat-form-field fxFlex.xs="48%" appearance="fill">
+						<mat-label>UOM</mat-label>
+						<input matInput>
+    </mat-form-field>
+						<mat-form-field fxFlex.xs="48%" appearance="fill">
+							<mat-label>Lot No</mat-label>
+							<input matInput>
+    </mat-form-field>
+				</div>
+				<div fxLayout.xs="row" fxLayoutGap.xs="4px" fxLayoutAlign.xs="space-between">
+					<mat-form-field fxFlex.xs="48%" appearance="fill">
+						<mat-label>Quantity X Price</mat-label>
+						<input matInput>
+    </mat-form-field>
+						<mat-form-field fxFlex.xs="48%" appearance="fill">
+							<mat-label>Tax</mat-label>
+							<input matInput>
+    </mat-form-field>
+				</div>
+				<mat-form-field fxFlex.xs="30%" appearance="fill">
+					<mat-label>Amount</mat-label>
+					<input matInput>
+    </mat-form-field>
+
+					<div fxFlex.xs="row" fxLayoutGap.xs="4px">
+						<mat-form-field fxFlex.xs="12%" appearance="fill">
+							<mat-label>S.No</mat-label>
+							<input matInput>
+    </mat-form-field>
+							<mat-form-field fxFlex.xs="69%" appearance="fill">
+								<mat-label>Description</mat-label>
+								<input matInput>
+    </mat-form-field>
+								<mat-form-field fxFlex.xs="15%" appearance="fill">
+									<mat-label>Qnty</mat-label>
+									<input matInput>
+    </mat-form-field>
+					</div>
+		</div>
+	</mat-expansion-panel>
+</mat-accordion>

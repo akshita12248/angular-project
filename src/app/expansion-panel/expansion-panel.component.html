@@ -65,7 +65,7 @@
 	<div fxLayout="column">
 		<div fxLayout="row" fxLayout.sm="column" [ngStyle.sm]="{'font-size.px': 8}"
 			[ngStyle.gt-sm]="{'font-size.px': 9}" [ngStyle.lg]="{'font-size.px': 12}">
-			<div fxLayout="column">
+			<div fxLayout="column" fxFlex="50%">
 				<app-voucher-sub-item *ngFor="let sub of formGroup.get('subItem')['controls'];let j=index"
 					[formGroup]="sub" [parentFormGroup]="formGroup" [parentData]="j">
 				</app-voucher-sub-item>
@@ -74,11 +74,11 @@
       (click)="addSubItem(formGroup)">Add Sub Item</button>
 			</div>
 			<div [ngStyle.lg]="{'margin-right.px':70,'margin-bottom.px':20}" fxLayoutAlign="end"
-				[ngStyle.sm]="{'margin-top.px':15,'margin-right.px':55}" fxFlex="100%">
+				[ngStyle.sm]="{'margin-top.px':15,'margin-right.px':55}" fxFlex="50%">
 				<mat-label style="margin-right:10px" [ngStyle.sm]="{'margin-top.px':5}"
 					[ngStyle.gt-sm]="{'margin-top.px':5}">
 					Effective Amount:</mat-label>
-				<mat-form-field appearance="fill" fxFlex.sm="30%" fxFlex.gt-sm="56%"
+				<mat-form-field appearance="fill" fxFlex.sm="30%" fxFlex.gt-sm="40%"
 					[ngStyle.sm]="{'margin-right.px':55}">
 					<input matInput formControlName="effectiveAmount">
     </mat-form-field>
@@ -98,7 +98,7 @@
 		<div [ngStyle.lg]="{'font-size.px':10,'margin-right.px':70}" fxLayoutAlign="end end" fxLayout="column"
 			fxLayoutAlign.sm="end end" fxLayoutAlign.gt-sm="end end" fxLayout.sm="column" fxLayout.gt-sm="column"
 			[ngStyle.sm]="{'font-size.px': 8,'margin-left.px':25,'margin-top.px':10}"
-			[ngStyle.gt-sm]="{'font-size.px': 9}">
+			[ngStyle.gt-sm]="{'font-size.px': 9}" fxFlex="100%">
 			<div>
 				<mat-label class="inputs" [ngStyle.sm]="{'margin-right.px':5}">Taxable Amount:</mat-label>
 				<mat-form-field appearance="fill" fxFlex.sm="60%" fxFlex.gt-sm="50%">
