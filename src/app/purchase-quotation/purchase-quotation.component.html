@@ -102,14 +102,15 @@
 			</div>
 			<div>
 				<div [ngStyle.lg]="{'margin-right.px':93}" [ngStyle.sm]="{'margin-top.px':10,'margin-right.px':20}"
-					[ngStyle.gt-sm]="{'margin-top.px':10,'margin-right.px':50}">
+					[ngStyle.gt-sm]="{'margin-top.px':10,'margin-right.px':24}">
 					<mat-label [ngStyle.lg]="{'margin-right.px':10}"
 						[ngStyle.sm]="{'margin-top.px':10,'margin-right.px':5}"
-						[ngStyle.gt-sm]="{'margin-top.px':10,'margin-right.px':5}">Final Amount:
+						[ngStyle.gt-sm]="{'margin-top.px':10,'margin-right.px':5}">Amount:
 					</mat-label>
-					<mat-form-field appearance="fill" fxFlex.sm="62%">
+					<mat-form-field appearance="fill" fxFlex.sm="62%" fxFlex.gt-sm="60%">
 						<input matInput >
     </mat-form-field>
+						<button mat-icon-button [disabled] fxFlex.sm="5%" fxFlex.gt-sm="4%"><mat-icon>clear</mat-icon></button>
 				</div>
 			</div>
 		</div>
