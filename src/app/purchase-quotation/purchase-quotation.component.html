@@ -34,7 +34,7 @@
 
 				</div>
 				<div fxFlex="20%" fxFlex.sm="20%" fxFlex.gt-sm="20%">
-					<mat-form-field appearance="fill" [ngStyle.sm]="{'margin-left.px':50}" fxFlex="100%"
+					<mat-form-field appearance="fill" [ngStyle.sm]="{'margin-left.px':10}" fxFlex="100%"
 						fxFlex.sm="100%" fxFlex.gt-sm="100%" [ngStyle.gt-sm]="{'margin-left.px':15}">
 						<mat-label>Number</mat-label>
 						<input matInput formControlName="invNumber">
@@ -92,16 +92,22 @@
 			</app-expansion-panel>
 		</mat-accordion>
 
-		<div class="form-group" fxLayoutAlign="space-between">
+		<div class="form-group" fxLayoutAlign="space-between" fxLayoutAlign.sm="space-between"
+			fxLayoutAlign.gt-sm="space-between">
 			<div style="margin-top:10px;margin-left:25px">
-				<button mat-raised-button color="primary" type="button"  (click)="addSkillButtonClick()">
+				<button mat-raised-button color="primary" type="button"  (click)="addSkillButtonClick()"
+        [ngStyle.sm]="{'font-size.px': 9,'margin-bottom.px':5}" [ngStyle.sm]="{'font-size.px': 10,'margin-bottom.px':7}">
       Add Item
     </button>
 			</div>
 			<div>
-				<div style="margin-right:93px;">
-					<mat-label style="margin-right:10px">Final Amount:</mat-label>
-					<mat-form-field appearance="fill">
+				<div [ngStyle.lg]="{'margin-right.px':93}" [ngStyle.sm]="{'margin-top.px':10,'margin-right.px':20}"
+					[ngStyle.gt-sm]="{'margin-top.px':10,'margin-right.px':50}">
+					<mat-label [ngStyle.lg]="{'margin-right.px':10}"
+						[ngStyle.sm]="{'margin-top.px':10,'margin-right.px':5}"
+						[ngStyle.gt-sm]="{'margin-top.px':10,'margin-right.px':5}">Final Amount:
+					</mat-label>
+					<mat-form-field appearance="fill" fxFlex.sm="62%">
 						<input matInput >
     </mat-form-field>
 				</div>

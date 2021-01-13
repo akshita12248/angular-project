@@ -1,19 +1,20 @@
-<div fxLayout="row" fxLayoutAlign="space-between end" style="font-size:10px;margin-top:5px;">
-	<div fxLayoutGap="10px" [formGroup]="formGroup">
-		<mat-form-field appearance="fill" fxFlex="8%">
+<div fxLayout="row" fxLayoutAlign="space-between end" style="margin-top:5px;" [ngStyle.lg]="{'font-size.px': 12}"
+	[ngStyle.gt-sm]="{'font-size.px': 9}" [ngStyle.sm]="{'font-size.px': 8}">
+	<div fxLayoutGap="10px" fxLayoutGap.gt-sm="8px" fxLayoutGap.sm="7px" [formGroup]="formGroup">
+		<mat-form-field appearance="fill" fxFlex="8%" fxFlex.gt-sm="6%" fxFlex.sm="5%">
 			<mat-label>S.No</mat-label>
 			<input matInput formControlName="subSerialNo">
 			<mat-error>
 				{{getSerialNoError()}}</mat-error>
 		</mat-form-field>
-		<mat-form-field appearance="fill" fxFlex="35%">
+		<mat-form-field appearance="fill" fxFlex="35%" fxFlex.gt-sm="30%" fxFlex.sm="26%">
 			<mat-label>Description</mat-label>
 			<input matInput formControlName="subDescription">
 			<mat-error>
 				{{getDescriptionError()}}</mat-error>
 		</mat-form-field>
-		<mat-form-field appearance="fill" fxFlex="8%">
-			<mat-label>Qnty</mat-label>
+		<mat-form-field appearance="fill" fxFlex="8%" fxFlex.gt-sm="8%" fxFlex.sm="7%">
+			<mat-label>Quantity</mat-label>
 			<input matInput formControlName="subQuantity">
 			<mat-error>
 				{{getQuantityError()}} </mat-error>
@@ -21,7 +22,8 @@
 		<button mat-icon-button color="accent"
           [disabled]="parentFormGroup.get('subItem')['controls'].length <= 1 "
           (click)="removeSubItemButtonClick(parentFormGroup,parentData)">
-        <mat-icon fxFlex.sm="5%" [ngStyle.sm]="{'margin-bottom.px': 12,'font-size.px':13}">clear</mat-icon>
+        <mat-icon fxFlex.sm="3%" [ngStyle.sm]="{'margin-bottom.px': 10}"
+        fxFlex.gt-sm="4%" [ngStyle.gt-sm]="{'margin-bottom.px': 8}">clear</mat-icon>
       </button>
 
 	</div>

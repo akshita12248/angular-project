@@ -1,23 +1,25 @@
-<div fxLayoutAlign="end" style="margin-right:21px;font-size:10px;" fxLayoutGap="10px" [formGroup]="formGroup">
-	<mat-form-field appearance="fill" fxFlex="5%">
+<div fxLayoutAlign="end" fxLayoutAlign.sm="end" style="margin-right:21px" fxLayoutGap="10px" [formGroup]="formGroup"
+	[ngStyle.sm]="{'font-size.px': 8,'margin-top.px':10}" [ngStyle.gt-sm]="{'font-size.px': 9}"
+	[ngStyle.lg]="{'font-size.px': 12,'margin-right.px':21}" fxLayoutGap.sm="6px" fxLayoutGap.gt-sm="9px">
+	<mat-form-field appearance="fill" fxFlex="5%" fxFlex.sm="11%" fxFlex.gt-sm="7%">
 		<mat-label>Bill Sundry</mat-label>
 		<input matInput formControlName="billSundry">
 		<mat-error>
 			{{getBillSundryError()}}</mat-error>
 	</mat-form-field>
-	<mat-form-field appearance="fill" fxFlex="15%">
+	<mat-form-field appearance="fill" fxFlex="15%" fxFlex.sm="24%" fxFlex.gt-sm="14%">
 		<mat-label>Description</mat-label>
 		<input matInput formControlName="desc">
 		<mat-error>
 			{{getDescriptionError()}}</mat-error>
 	</mat-form-field>
-	<mat-form-field appearance="fill" fxFlex="5%">
+	<mat-form-field appearance="fill" fxFlex="5%" fxFlex.sm="9%" fxFlex.gt-sm="7%">
 		<mat-label>Value</mat-label>
 		<input matInput formControlName="value">
 		<mat-error>
 			{{getValueError()}}</mat-error>
 	</mat-form-field>
-	<mat-form-field appearance="fill">
+	<mat-form-field appearance="fill" fxFlex.sm="15%" fxFlex.gt-sm="15%">
 		<mat-label>Amount</mat-label>
 		<input matInput formControlName="amount">
 		<mat-error>
@@ -27,7 +29,9 @@
 	<button mat-icon-button color="accent"
           [disabled]="parentFormGroup.get('bills')['controls'].length <= 1 "
          (click)="removeVoucherButtonClick(parentFormGroup,parentData)">
-        <mat-icon fxFlex.sm="5%" [ngStyle.sm]="{'margin-bottom.px': 12,'font-size.px':13}">clear</mat-icon>
+        <mat-icon [ngStyle.sm]="{'margin-bottom.px': 10}"
+        fxFlex.gt-sm="4%" [ngStyle.gt-sm]="{'margin-bottom.px': 8}"
+         fxFlex.sm="3%" [ngStyle.sm]="{'margin-bottom.px': 10}">clear</mat-icon>
       </button>
 
 	<!-- <button *ngIf="parentFormGroup.get('bills')['controls'].length==1" style="border: none; background: none;outline:none;"

@@ -4,7 +4,7 @@
 		<mat-panel-description>
 			<div fxLayout="row" [ngStyle.sm]="{'font-size.px': 8}" [ngStyle.gt-sm]="{'font-size.px': 9}"
 				[ngStyle.lg]="{'font-size.px': 12}">
-				<div fxLayoutGap="3px" fxLayoutGap.sm="2px" fxLayoutGap.gt-sm="2px">
+				<div fxLayoutGap="3px" fxLayoutGap.sm="1px" fxLayoutGap.gt-sm="2px">
 					<mat-form-field appearance="fill" fxFlex="22%" fxFlex.sm="9%" fxFlex.gt-sm="16%">
 						<mat-label>Item</mat-label>
 						<input matInput formControlName="item">
@@ -17,31 +17,31 @@
 						<mat-error>
 							{{ getUomError()}}</mat-error>
 					</mat-form-field>
-					<mat-form-field appearance="fill" fxFlex="8%" fxFlex.sm="4%" fxFlex.gt-sm="5%">
+					<mat-form-field appearance="fill" fxFlex="8%" fxFlex.sm="3%" fxFlex.gt-sm="5%">
 						<mat-label>Quantity</mat-label>
 						<input matInput formControlName="quantity">
 						<mat-error>
 							{{getQuantityError()}}</mat-error>
 					</mat-form-field>
-					<mat-form-field appearance="fill" fxFlex="8%" fxFlex.sm="4%" fxFlex.gt-sm="5%">
+					<mat-form-field appearance="fill" fxFlex="8%" fxFlex.sm="3%" fxFlex.gt-sm="5%">
 						<mat-label>Price</mat-label>
 						<input matInput formControlName="price">
 						<mat-error>
 							{{getPriceError()}}</mat-error>
 					</mat-form-field>
-					<mat-form-field appearance="fill" fxFlex="8%" fxFlex.sm="4%" fxFlex.gt-sm="5%">
+					<mat-form-field appearance="fill" fxFlex="8%" fxFlex.sm="3%" fxFlex.gt-sm="5%">
 						<mat-label>Lot No</mat-label>
 						<input matInput formControlName="lotNo">
 						<mat-error>
 							{{getLotNoError()}}</mat-error>
 					</mat-form-field>
-					<mat-form-field appearance="fill" fxFlex="13%" fxFlex.sm="5%" fxFlex.gt-sm="9%">
+					<mat-form-field appearance="fill" fxFlex="13%" fxFlex.sm="4%" fxFlex.gt-sm="9%">
 						<mat-label>Tax</mat-label>
 						<input matInput formControlName="tax">
 						<mat-error>
 							{{getTaxError()}}</mat-error>
 					</mat-form-field>
-					<mat-form-field appearance="fill" fxFlex="13%" fxFlex.sm="5%" fxFlex.gt-sm="9%">
+					<mat-form-field appearance="fill" fxFlex="13%" fxFlex.sm="4%" fxFlex.gt-sm="9%">
 						<mat-label>Amount</mat-label>
 						<input matInput formControlName="amount">
 						<mat-error>
@@ -55,23 +55,30 @@
 					<button mat-icon-button color="accent"
           [disabled]="parentFormGroup.get('skills')['controls'].length <= 1 "
           (click)="removeSkillButtonClick()">
-        <mat-icon fxFlex.sm="5%" fxFlex.gt-sm="4%" [ngStyle.gt-sm]="{'margin-bottom.px': 12}">clear</mat-icon>
+        <mat-icon fxFlex.sm="5%" fxFlex.gt-sm="4%" [ngStyle.gt-sm]="{'margin-bottom.px': 12}" [ngStyle.sm]="{'margin-bottom.px': 10}">clear</mat-icon>
       </button>
 				</div>
 			</div>
 
 		</mat-panel-description>
 	</mat-expansion-panel-header>
-	<div fxLayout="row" fxLayoutAlign="space-between end">
+	<div fxLayout="row" fxLayout.sm="column" fxLayoutAlign.sm="start" fxLayoutAlign="space-between end"
+		[ngStyle.sm]="{'font-size.px': 8}" [ngStyle.gt-sm]="{'font-size.px': 9}" [ngStyle.lg]="{'font-size.px': 12}"
+		fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between end">
 		<div>
 			<app-voucher-sub-item *ngFor="let sub of formGroup.get('subItem')['controls'];let j=index" [formGroup]="sub"
 				[parentFormGroup]="formGroup" [parentData]="j">
 			</app-voucher-sub-item>
-			<button mat-raised-button style="font-size:10px;margin-top:10px;" (click)="addSubItem(formGroup)">Add Sub Item</button>
+			<button mat-raised-button style="margin-top:10px;" [ngStyle.sm]="{'font-size.px': 6,'margin-top.px':5}"
+      [ngStyle.gt-sm]="{'font-size.px': 8,'margin-top.px':7}"
+      (click)="addSubItem(formGroup)">Add Sub Item</button>
 		</div>
-		<div style="font-size:10px;margin-right:70px;margin-bottom:20px">
-			<mat-label style="margin-right:10px">Effective Amount:</mat-label>
-			<mat-form-field appearance="fill">
+		<div [ngStyle.lg]="{'margin-right.px':70,'margin-bottom.px':20}" fxLayoutAlign.sm="end"
+			[ngStyle.sm]="{'margin-top.px':15,'margin-right.px':35}">
+			<mat-label style="margin-right:10px" [ngStyle.sm]="{'margin-top.px':5}"
+				[ngStyle.gt-sm]="{'margin-top.px':5}">
+				Effective Amount:</mat-label>
+			<mat-form-field appearance="fill" fxFlex.sm="30%" fxFlex.gt-sm="56%">
 				<input matInput formControlName="effectiveAmount">
     </mat-form-field>
 		</div>
@@ -79,40 +86,46 @@
 
 	<app-voucher-bill-sundry *ngFor="let bill of formGroup.get('bills')['controls'];let j=index" [formGroup]="bill"
 		[parentFormGroup]="formGroup" [parentData]="j"></app-voucher-bill-sundry>
-	<div fxLayoutAlign="center" style="margin-left:170px;margin-top:10px">
-		<button mat-raised-button style="font-size:10px" type="button" (click)="addBillSundryClick(formGroup)">
+	<div fxLayoutAlign="center" fxLayoutAlign.sm="center" [ngStyle.lg]="{'margin-left.px':170,'margin-top.px':10}">
+		<button mat-raised-button [ngStyle.lg]="{'font-size.px':10}" [ngStyle.sm]="{'font-size.px': 6,'margin-top.px':5,'margin-right.px':170}" [ngStyle.gt-sm]="{'font-size.px': 8,'margin-top.px':7,'margin-left.px':30}"
+    type="button" (click)="addBillSundryClick(formGroup)">
       Add Bill Sundry
     </button>
 	</div>
 
-	<div style="font-size:10px;margin-right:70px" fxLayoutAlign="end end" fxLayout="column">
+	<div [ngStyle.lg]="{'font-size.px':10,'margin-right.px':70}" fxLayoutAlign="end end" fxLayout="column"
+		fxLayoutAlign.sm="end end" fxLayout.sm="column" fxLayout.gt-sm="column"
+		[ngStyle.sm]="{'font-size.px': 8,'margin-left.px':25,'margin-top.px':10}"
+		[ngStyle.gt-sm]="{'font-size.px': 9,'margin-left.px':50}">
 		<div>
-			<mat-label style="margin-right:10px;margin-top:10px">Taxable Amount:</mat-label>
-			<mat-form-field appearance="fill">
+			<mat-label class="inputs" [ngStyle.sm]="{'margin-right.px':5}">Taxable Amount:</mat-label>
+			<mat-form-field appearance="fill" fxFlex.sm="60%" fxFlex.gt-sm="60%">
 				<input matInput formControlName="taxableAmount">
     </mat-form-field>
 		</div>
 		<div>
-			<mat-label style="margin-right:10px;margin-top:10px">cgst@20%2000:</mat-label>
-			<mat-form-field appearance="fill">
+			<mat-label class="inputs" [ngStyle.sm]="{'margin-right.px':5}">cgst@40%4000:</mat-label>
+			<mat-form-field appearance="fill" fxFlex.sm="60%" fxFlex.gt-sm="60%">
 				<input matInput formControlName="cgstTaxableAmount">
     </mat-form-field>
 		</div>
 		<div>
-			<mat-label style="margin-right:10px;margin-top:10px">sgst@20%2000:</mat-label>
-			<mat-form-field appearance="fill">
+			<mat-label class="inputs" [ngStyle.sm]="{'margin-right.px':5}">sgst@40%4000:</mat-label>
+			<mat-form-field appearance="fill" fxFlex.sm="60%" fxFlex.gt-sm="60%">
 				<input matInput formControlName="sgstTaxableAmount">
     </mat-form-field>
 		</div>
 		<div>
-			<mat-label style="margin-right:10px;margin-top:10px">cess@20%2000</mat-label>
-			<mat-form-field appearance="fill">
+			<mat-label class="inputs" [ngStyle.sm]="{'margin-right.px':5}">cess@40%4000</mat-label>
+			<mat-form-field appearance="fill" fxFlex.sm="60%" fxFlex.gt-sm="60%">
 				<input matInput formControlName="cessTaxableAmount">
     </mat-form-field>
 		</div>
 		<div>
-			<mat-label style="margin-right:10px;margin-top:10px;font-size:20px;">Amount</mat-label>
-			<mat-form-field appearance="fill">
+			<mat-label [ngStyle.sm]="{'margin-right.px':5}" [ngStyle.gt-sm]="{'margin-right.px':5}"
+				[ngStyle.lg]="{'margin-right.px':10,'margin-top.px':10}">
+				Amount</mat-label>
+			<mat-form-field appearance="fill" fxFlex.sm="69%" fxFlex.gt-sm="71%">
 				<input matInput formControlName="finalAmount">
     </mat-form-field>
 		</div>

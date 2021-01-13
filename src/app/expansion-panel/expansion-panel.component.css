@@ -6,3 +6,7 @@
   .mat-expansion-panel-header:not([aria-disabled="true"]):hover {
   background: white;
 }
+.inputs {
+  margin-right: 10px;
+  margin-top: 10px;
+}
