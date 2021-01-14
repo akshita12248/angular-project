@@ -3,6 +3,7 @@
 		<mat-expansion-panel-header>
 			<mat-panel-description>
 				<mat-label>Name</mat-label>
+				<mat-label fxLayoutAlign.xs="end">X</mat-label>
 			</mat-panel-description>
 		</mat-expansion-panel-header>
 		<div fxLayout.xs="column" fxFlex.xs="100%" [ngStyle.xs]="{'font-size.px':8}">
@@ -28,27 +29,87 @@
 						<mat-form-field fxFlex.xs="48%" appearance="fill">
 							<mat-label>Tax</mat-label>
 							<input matInput>
-    </mat-form-field>
+             </mat-form-field>
 				</div>
 				<mat-form-field fxFlex.xs="30%" appearance="fill">
 					<mat-label>Amount</mat-label>
 					<input matInput>
-    </mat-form-field>
-
+             </mat-form-field>
 					<div fxFlex.xs="row" fxLayoutGap.xs="4px">
 						<mat-form-field fxFlex.xs="12%" appearance="fill">
 							<mat-label>S.No</mat-label>
 							<input matInput>
-    </mat-form-field>
+             </mat-form-field>
 							<mat-form-field fxFlex.xs="69%" appearance="fill">
 								<mat-label>Description</mat-label>
 								<input matInput>
-    </mat-form-field>
-								<mat-form-field fxFlex.xs="15%" appearance="fill">
+             </mat-form-field>
+								<mat-form-field fxFlex.xs="16%" appearance="fill">
 									<mat-label>Qnty</mat-label>
 									<input matInput>
+             </mat-form-field>
+					</div>
+					<div fxLayoutAlign.xs="end">
+						<button mat-flat-button>Add +</button>
+					</div>
+					<div fxLayoutAlign.xs="end" [ngStyle.xs]="{'margin-top.px':15}">
+						<!-- <mat-label [ngStyle.xs]="{'font-size.px':10,'margin-top.px':10}">Effective Amount</mat-label> -->
+						<mat-form-field fxFlex.xs="50%" appearance="fill">
+							<mat-label>Effective Amount</mat-label>
+							<input matInput>
     </mat-form-field>
 					</div>
+					<mat-form-field appearance="fill">
+						<mat-label>Bill Sundry</mat-label>
+						<input matInput>
+             </mat-form-field>
+						<mat-form-field appearance="fill">
+							<mat-label>Description</mat-label>
+							<input matInput>
+             </mat-form-field>
+							<div fxLayout.xs="row" fxLayoutGap.xs="4px" fxLayoutAlign.xs="space-between">
+								<mat-form-field fxFlex.xs="48%" appearance="fill">
+									<mat-label>Value</mat-label>
+									<input matInput>
+    </mat-form-field>
+									<mat-form-field fxFlex.xs="48%" appearance="fill">
+										<mat-label>Amount</mat-label>
+										<input matInput>
+    </mat-form-field>
+							</div>
+							<div fxLayoutAlign.xs="end">
+								<button mat-flat-button>Add +</button>
+							</div>
+							<div fxLayoutAlign.xs="end" [ngStyle.xs]="{'margin-top.px':15}">
+								<mat-form-field fxFlex.xs="47%" appearance="fill">
+									<mat-label>Taxable Amount</mat-label>
+									<input matInput>
+    </mat-form-field>
+							</div>
+							<div fxLayoutAlign.xs="end">
+								<mat-form-field fxFlex.xs="47%" appearance="fill">
+									<mat-label>cgst</mat-label>
+									<input matInput>
+    </mat-form-field>
+							</div>
+							<div fxLayoutAlign.xs="end">
+								<mat-form-field fxFlex.xs="47%" appearance="fill">
+									<mat-label>sgst</mat-label>
+									<input matInput>
+    </mat-form-field>
+							</div>
+							<div fxLayoutAlign.xs="end">
+								<mat-form-field fxFlex.xs="47%" appearance="fill">
+									<mat-label>cess</mat-label>
+									<input matInput>
+    </mat-form-field>
+							</div>
+							<div fxLayoutAlign.xs="end">
+								<mat-form-field fxFlex.xs="47%" appearance="fill">
+									<mat-label>Amount</mat-label>
+									<input matInput>
+    </mat-form-field>
+							</div>
 		</div>
 	</mat-expansion-panel>
 </mat-accordion>
