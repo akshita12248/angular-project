@@ -15,15 +15,19 @@
 	<form [formGroup]="voucherForm">
 		<div fxLayout="column" fxLayoutGap="10px" fxLayoutGap.sm="8px"
 			style="margin-top:10px;margin-left:25px;margin-right:65px" *ngIf="!deviceXs">
-			<div fxLayout="row" fxLayout.sm="row" fxLayout.gt-sm="row" fxLayoutAlign="space-between"
+			
+      <div fxLayout="row" fxLayout.sm="row" fxLayout.gt-sm="row" fxLayoutAlign="space-between"
 				fxLayoutAlign.sm="space-between" fxFlex="100%" fxFlex.sm="100%" fxFlex.gt-sm="100%">
-				<div fxLayout="row" fxLayout.sm="row" fxLayoutGap="13px" fxFlex="70%" fxFlex.sm="70%">
-					<mat-form-field appearance="fill" fxFlex="40%" fxFlex.sm="45%" fxFlex.gt-sm="40%">
+				
+        <div fxLayout="row" fxLayout.sm="row" fxLayoutGap="13px" fxFlex="70%" fxFlex.sm="70%">
+					
+          <mat-form-field appearance="fill" fxFlex="40%" fxFlex.sm="45%" fxFlex.gt-sm="40%">
 						<mat-label>Invoice No.</mat-label>
 						<input matInput formControlName="invoiceNo">
 						<mat-error>{{getInvoiceNoError()}}</mat-error>
 					</mat-form-field>
-					<mat-form-field appearance="fill" fxFlex="20%" fxFlex.sm="23%" fxFlex.gt-sm="20%">
+					
+          <mat-form-field appearance="fill" fxFlex="20%" fxFlex.sm="23%" fxFlex.gt-sm="20%">
 						<mat-label>Date</mat-label>
 						<input matInput [matDatepicker]="picker" formControlName="date">
 						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

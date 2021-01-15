@@ -36,6 +36,9 @@ export class PurchaseQuotationComponent implements OnInit {
       desc: ["", Validators.required],
       skills: this.fb.array([this.addSkillFormGroup()])
     });
+    this.voucherForm.valueChanges.subscribe(v => {
+      console.log(v);
+    });
   }
   addSkillFormGroup(): FormGroup {
     return this.fb.group({
