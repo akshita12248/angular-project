@@ -13,6 +13,7 @@ import { Subscription } from "rxjs";
 })
 export class AppComponent implements OnInit, AfterViewInit {
   private mediaSub: Subscription;
+  deviceXs:boolean;
   constructor(
     private cdRef: ChangeDetectorRef,
     private mediaObserver: MediaObserver
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.log(change.mqAlias);
         console.log(change);
         this.cdRef.markForCheck();
+        this.deviceXs = change.mqAlias === 'xs' ? true : false;
       }
     );
   }

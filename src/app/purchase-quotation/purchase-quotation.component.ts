@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { MediaChange, MediaObserver } from "@angular/flex-layout";
 import {
   AbstractControl,
@@ -19,7 +19,7 @@ import { map, startWith } from "rxjs/operators";
 export class PurchaseQuotationComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
   voucherForm: FormGroup;
-
+  @Input() deviceXs: boolean;
   myControl = new FormControl();
   options: string[] = ["123", "456", "789"];
   filteredOptions: Observable<string[]>;

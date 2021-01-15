@@ -14,7 +14,7 @@
 
 	<form [formGroup]="voucherForm">
 		<div fxLayout="column" fxLayoutGap="10px" fxLayoutGap.sm="8px"
-			style="margin-top:10px;margin-left:25px;margin-right:65px">
+			style="margin-top:10px;margin-left:25px;margin-right:65px" *ngIf="!deviceXs">
 			<div fxLayout="row" fxLayout.sm="row" fxLayout.gt-sm="row" fxLayoutAlign="space-between"
 				fxLayoutAlign.sm="space-between" fxFlex="100%" fxFlex.sm="100%" fxFlex.gt-sm="100%">
 				<div fxLayout="row" fxLayout.sm="row" fxLayoutGap="13px" fxFlex="70%" fxFlex.sm="70%">
@@ -85,15 +85,77 @@
 
 
 		</div>
+		<div *ngIf="deviceXs" [ngStyle.xs]="{'font-size.px':8,'margin-top.px':10}">
+			<div fxFlex="column" fxFlex="100%">
+				<div fxLayout="row" fxLayoutAlign="space-between">
+					<button mat-icon-button >
+        <mat-icon>monetization_on</mat-icon>
+      </button>
+					<mat-form-field fxFlex="35%" appearance="fill" [ngStyle.xs]="{'margin-top.px':8}">
+						<mat-label>Number</mat-label>
+						<input matInput>
+        </mat-form-field>
+				</div>
+				<div fxLayout="row" fxLayoutAlign="space-between">
+					<mat-form-field fxFlex="62%" appearance="fill">
+						<mat-label>Invoice No.</mat-label>
+						<input matInput>
+    </mat-form-field>
+						<mat-form-field appearance="fill" fxFlex="35%">
+							<mat-label>Date</mat-label>
+							<input matInput [matDatepicker]="picker3">
+							<mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+							<mat-datepicker #picker3></mat-datepicker>
+						</mat-form-field>
+				</div>
+				<div fxLayout="row" fxLayoutAlign="space-between">
+					<mat-form-field fxFlex="62%" appearance="fill">
+						<mat-label>Account</mat-label>
+						<input matInput>
+    </mat-form-field>
+						<mat-form-field fxFlex="35%" appearance="fill">
+							<mat-label>Due Date</mat-label>
+							<input matInput [matDatepicker]="picker4">
+							<mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+							<mat-datepicker #picker4></mat-datepicker>
+						</mat-form-field>
+				</div>
 
-		<mat-accordion formArrayName="skills">
+				<div fxLayout="row" fxLayoutAlign="space-between">
+					<mat-form-field fxFlex="62%" appearance="fill">
+						<mat-label>Description</mat-label>
+						<input matInput>
+    </mat-form-field>
+						<mat-form-field fxFlex="35%" appearance="fill">
+							<mat-label>Conversion Rate</mat-label>
+							<input matInput>
+						</mat-form-field>
+				</div>
+
+				<div fxLayout="row" fxLayoutAlign="space-between">
+					<mat-form-field fxFlex="62%" appearance="fill">
+						<mat-label>Center</mat-label>
+						<input matInput>
+    </mat-form-field>
+						<mat-form-field fxFlex="35%" appearance="fill">
+							<mat-label>Tax Scope</mat-label>
+							<input matInput>
+						</mat-form-field>
+				</div>
+
+			</div>
+		</div>
+		<mat-accordion formArrayName="skills" *ngIf="!deviceXs">
 			<app-expansion-panel *ngFor="let skill of voucherForm.get('skills')['controls'];let i=index"
 				style="padding:10px;" [formGroup]="skill" [parentFormGroup]="voucherForm" [parentData]="i">
 			</app-expansion-panel>
 		</mat-accordion>
+		<mat-accordion *ngIf="deviceXs">
+			<app-expansion-panel-xs></app-expansion-panel-xs>
+		</mat-accordion>
 
 		<div class="form-group" fxLayoutAlign="space-between" fxLayoutAlign.sm="space-between"
-			fxLayoutAlign.gt-sm="space-between">
+			fxLayoutAlign.gt-sm="space-between" *ngIf="!deviceXs">
 			<div style="margin-top:10px;margin-left:25px">
 				<button mat-raised-button color="primary" type="button"  (click)="addSkillButtonClick()"
         [ngStyle.sm]="{'font-size.px': 9,'margin-bottom.px':5}" [ngStyle.sm]="{'font-size.px': 10,'margin-bottom.px':7}">
@@ -113,6 +175,16 @@
 						<button mat-icon-button [disabled] fxFlex.sm="5%" fxFlex.gt-sm="4%"><mat-icon>clear</mat-icon></button>
 				</div>
 			</div>
+		</div>
+		<div fxLayout.xs="row" fxLayoutGap.xs="4px" fxLayoutAlign.xs="space-between"
+			[ngStyle.xs]="{'font-size.px':8,'margin-top.px':15}" *ngIf="deviceXs">
+			<button mat-icon-button>
+        <mat-icon>add</mat-icon>
+      </button>
+			<mat-form-field fxFlex.xs="47%" appearance="fill">
+				<mat-label>Amount</mat-label>
+				<input matInput>
+    </mat-form-field>
 		</div>
 	</form>
 </mat-drawer-container>

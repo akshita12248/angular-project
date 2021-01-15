@@ -1,4 +1,4 @@
-<mat-accordion>
+
 	<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
 		<mat-expansion-panel-header>
 			<mat-panel-description>
@@ -23,7 +23,7 @@
 				<div fxLayout.xs="row" fxLayoutGap.xs="4px" fxLayoutAlign.xs="space-between">
 					<mat-form-field fxFlex.xs="48%" appearance="fill">
 						<mat-label>Quantity X Price</mat-label>
-						<div fxFlex.xs="row" fxLayoutGap.xs="4px">
+						<div fxFlex.xs="row" fxLayoutGap.xs="5px" [ngStyle.xs]="{'margin-top.px':5}">
 							<mat-form-field fxFlex.xs="10%">
 								<input matInput>
              </mat-form-field>
@@ -130,14 +130,3 @@
 							</div>
 		</div>
 	</mat-expansion-panel>
-</mat-accordion>
-<div fxLayout.xs="row" fxLayoutGap.xs="4px" fxLayoutAlign.xs="space-between"
-	[ngStyle.xs]="{'font-size.px':8,'margin-top.px':15}">
-	<button mat-icon-button>
-        <mat-icon>add</mat-icon>
-      </button>
-	<mat-form-field fxFlex.xs="47%" appearance="fill">
-		<mat-label>Amount</mat-label>
-		<input matInput>
-    </mat-form-field>
-</div>
